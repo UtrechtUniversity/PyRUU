@@ -25,12 +25,12 @@ website:
       - text: "Courses"
         icon: mortarboard-fill
         menu: 
-          - text: "Ecological field research"
-            href: Courses/Ecological_field_research/index.qmd
-            icon: tree-fill
           - text: "Statistics GSS"
             href: Courses/Statistics_GSS/index.qmd
             icon: bar-chart-line-fill
+          - text: "Ecological field research"
+            href: Courses/Ecological_field_research/index.qmd
+            icon: tree-fill
       - href: contact.qmd
         text: "Contact"
         icon: envelope-at-fill
