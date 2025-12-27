@@ -1,0 +1,13 @@
+---
+title: "Welcome!"
+---
+
+![](Images/logo_website.png){fig-align="center" width="378"}
+
+::: text-center
+PyRUU is a website created by lecturers at Utrecht University to teach data science in both R and Python to anyone wishing to learn these programming languages for exploring, visualising, and analysing real-world data.
+
+This website also contains freely accessible content specific to courses for students at Utrecht University.
+
+The development of this website is supported by the Faculty of Geosciences of Utrecht University.
+:::

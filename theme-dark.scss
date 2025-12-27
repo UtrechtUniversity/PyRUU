@@ -1,10 +1,29 @@
 /*-- scss:defaults --*/
-  // Base document colors
-$body-bg: #181818;
-  $body-color: white;
-$link-color: #C00A35;
-$sidebar-bg: #FFCD00;
-$code-color: #C00A35;
-  
-  // Code blocks
+// Base document colors
+$body-bg: #37474F;
+$body-color: white;
+$link-color: #FFCD00;
+$navbar-bg: #FFCD00;
+$code-color: #FFCD00;
+
+/*-- scss:rules --*/
+$dropdown-active-bg: #455A64; // blue highlight
+
+.dropdown-item {
+
+    &:hover,
+    &:focus,
+    &.active {
+        background-color: $dropdown-active-bg;
+    }
+}
+
+.navbar-brand img {
+    height: 30px;
+    /* adjust as needed */
+    max-height: none;
+    /* overrides Bootstrap limit */
+}
+
+// Code blocks
 $code-block-bg-alpha: -.8;

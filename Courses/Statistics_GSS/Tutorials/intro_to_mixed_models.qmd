@@ -1,0 +1,16 @@
+---
+title: "Tutorial 10: Introduction to linear mixed-effect models"
+author:
+  - name: Benjamin Delory
+    orcid: 0000-0002-1190-8060
+    email: b.m.m.delory@uu.nl
+    affiliations:
+      - name: Copernicus institute of sustainable development, Utrecht University
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+image: /Images/Rlogo.png
+---
+
+Add text

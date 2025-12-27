@@ -3,57 +3,117 @@ project:
   output-dir: docs
   
 website:
-  title: "Ecological field research (GEO2-2439)"
+  title: ""
   page-navigation: true
+  bread-crumbs: true
   page-footer:
-    right: "This website is built and maintained with ☕ and [Quarto](https://quarto.org/)."
-  sidebar:
+    center: "This website is built and maintained with ☕ and [Quarto](https://quarto.org/)."
+    left: |
+      <a href="https://www.uu.nl/en" target="_blank" rel="noopener">
+        <img src="/Images/uu-logo-en-geenwitruimte.png"
+             alt="Footer logo"
+             style="height:40px;">
+      </a>
+  navbar:
+    logo: Images/logo_website.png
+    logo-alt: "Website logo"
+    left: 
+      - href: Learn_R/index.qmd
+        text: "Learn R"
+      - href: Learn_Python/index.qmd
+        text: "Learn Python"
+      - text: "Courses"
+        icon: mortarboard-fill
+        menu: 
+          - text: "Ecological field research"
+            href: Courses/Ecological_field_research/index.qmd
+            icon: tree-fill
+          - text: "Statistics GSS"
+            href: Courses/Statistics_GSS/index.qmd
+            icon: bar-chart-line-fill
+      - href: contact.qmd
+        text: "Contact"
+        icon: envelope-at-fill
     tools:
       - icon: github
         menu:
-          - text: Source code
+          - text: "Source code"
             url:  https://github.com/UtrechtUniversity/RforUU
-          - text: Report an issue
+          - text: "Report an issue"
             url:  https://github.com/UtrechtUniversity/RforUU/issues
-    search: true
-    pinned: true
-    alignment: center
-    style: docked
-    collapse-level: 2
-    logo: uu-logo-en-geenwitruimte.png
-    logo-alt: "Logo of Utrecht University"
-    contents:
-      - section: "Course information"
-        contents: 
-          - href: about.qmd
-            text: About the course
-          - href: prerequisites.qmd
-            text: Prerequisites
-      - section: "Tutorials"
-        contents: 
-          - href: R_basics.qmd
-            text: R basics
-            icon: play-fill
-          - href: data_wrangling.qmd
-            text: Data wrangling
-            icon: table
-          - href: data_visualisation.qmd
-            text: Data visualisation
-            icon: bar-chart-line-fill
-          - href: quantifying_biodiversity.qmd
-            text: Quantifying biodiversity
-            icon: globe
-          - href: data_exploration.qmd
-            text: Data exploration
-            icon: binoculars-fill
-          - href: data_analysis.qmd
-            text: Data analysis
-            icon: laptop
-      - section: "Contact"
-        contents:
-          - href: contact.qmd
-            text: Contact
-            icon: envelope-at-fill
+  sidebar:
+    - title: "Ecological field research"
+      alignment: left
+      style: floating
+      collapse-level: 3
+      contents:
+        - section: "Ecological field research"
+          contents:   
+          - href: Courses/Ecological_field_research/index.qmd
+            text: "Course information"
+          - section: "Before starting"
+            contents:
+              - href: Courses/Ecological_field_research/Tutorials/prologue.qmd
+                text: "Prologue"
+              - href: Courses/Ecological_field_research/Tutorials/prerequisites.qmd
+                text: "Prerequisites"
+              - href: Courses/Ecological_field_research/Tutorials/R_basics.qmd
+                text: "R basics"
+          - section: "Tutorials"
+            href: Courses/Ecological_field_research/Tutorials/index.qmd
+            contents:
+              - href: Courses/Ecological_field_research/Tutorials/data_wrangling.qmd
+                text: "1. Data wrangling"
+              - href: Courses/Ecological_field_research/Tutorials/data_visualisation.qmd
+                text: "2. Data visualisation"
+              - href: Courses/Ecological_field_research/Tutorials/quantifying_biodiversity.qmd
+                text: "3. Quantifying biodiversity"
+              - href: Courses/Ecological_field_research/Tutorials/data_exploration.qmd
+                text: "4. Data exploration"
+              - href: Courses/Ecological_field_research/Tutorials/data_analysis.qmd
+                text: "5. Data analysis"
+    
+    - title: "Statistics GSS"
+      contents:
+        - section: "Statistics GSS"
+          contents:   
+          - href: Courses/Statistics_GSS/index.qmd
+            text: "Course information"
+          - section: "Before starting"
+            contents:
+              - href: Courses/Statistics_GSS/Tutorials/prologue.qmd
+                text: "Prologue"
+              - href: Courses/Statistics_GSS/Tutorials/prerequisites.qmd
+                text: "Prerequisites"
+          - section: "Tutorials"
+            href: Courses/Statistics_GSS/Tutorials/index.qmd
+            contents:
+              - href: Courses/Statistics_GSS/Tutorials/getting_to_know_R.qmd
+                text: "1. Getting to know R"
+              - href: Courses/Statistics_GSS/Tutorials/descriptive_statistics.qmd
+                text: "2. Descriptive statistics"
+              - href: Courses/Statistics_GSS/Tutorials/comparing_two_groups_part1.qmd
+                text: "3. Comparing two groups (part 1)"
+              - href: Courses/Statistics_GSS/Tutorials/comparing_two_groups_part2.qmd
+                text: "4. Comparing two groups (part 2)"
+              - href: Courses/Statistics_GSS/Tutorials/comparing_multiple_groups.qmd
+                text: "5. Comparing multiple groups"
+              - href: Courses/Statistics_GSS/Tutorials/contrasts_and_two_way_ANOVA.qmd
+                text: "6. Contrasts and two-way ANOVA"
+              - href: Courses/Statistics_GSS/Tutorials/association_continuous_discrete_data.qmd
+                text: "7. Association continuous and discrete data"
+              - href: Courses/Statistics_GSS/Tutorials/linear_regression_part1.qmd
+                text: "8. Linear regression (part 1)"
+              - href: Courses/Statistics_GSS/Tutorials/linear_regression_part2.qmd
+                text: "9. Linear regression (part 2)"
+              - href: Courses/Statistics_GSS/Tutorials/intro_to_mixed_models.qmd
+                text: "10. Introduction to linear mixed-effect models"
+              - href: Courses/Statistics_GSS/Tutorials/logistic_regression.qmd
+                text: "11. Logistic regression"
+              - href: Courses/Statistics_GSS/Tutorials/association_nominal_variables.qmd
+                text: "12. Association nominal variables"
+              - href: Courses/Statistics_GSS/Tutorials/principal_component_analysis.qmd
+                text: "13. Principal component analysis"
 
 format:
   html:

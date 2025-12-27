@@ -1,0 +1,31 @@
+---
+title: Ecological field research
+---
+
+## Course code
+
+GEO2-2439
+
+## Course coordinator
+
+[Benjamin Delory](https://www.uu.nl/staff/BMMDelory)
+
+## Course description
+
+Conducting research is not something you can improvise. It requires thorough planning and execution, especially in ecology where research questions are often complex and field conditions can be challenging (bad or extreme weather, tough terrain, remote areas, etc.). Before heading out into the wild, we need to make important decisions about how we are going to gather ecological data and analyse it to answer our research questions and test our hypotheses. This means figuring out the sampling design we will use and choosing the right techniques and tools for collecting samples and meaningful ecological data about natural processes and biodiversity. But it is not a simple task. Researchers have to consider a number of factors that could impact the success of their research project — like variations in the landscape, potential biases and errors from observers, equipment costs and availability, and the pros and cons of different sampling methods. Even after data collection, researchers need to manage, visualise, explore and analyse their data properly before they can communicate their findings to their peers, to policymakers, and to society at large. All these steps require special attention, as they can affect the reliability of research results and their potential impact on developing solutions towards a more sustainable future.
+
+The main objective of this course is to acquire the skills needed to plan ecological fieldwork and collect high-quality data in the field and in the laboratory on biotic and abiotic variables using appropriate sampling techniques. This course will also give you the knowledge and tools to manage, visualise, explore, and analyse complex ecological datasets using best scientific practices, as well as to correctly interpret results taking into account the advantages and disadvantages of the research design (e.g., sampling limitations, observer bias, etc.).
+
+## Course objectives
+
+1.  Explain and discuss common methods used in the field to collect ecological and environmental data that can be used to answer research questions
+
+2.  Choose appropriate scientific methods to collect high-quality measurements and successfully apply these methods in the field
+
+3.  Apply data management principles to document, structure, manage, and share data collected in the field in accordance with the highest scientific standards
+
+4.  Explore, visualise and analyse ecological and environmental data in a scientifically sound manner
+
+5.  Write a research paper in which research results are presented, interpreted, and discussed in a concise, clear, and accurate way
+
+6.  Orally present and compare results obtained by different students and identify possible sources of variation

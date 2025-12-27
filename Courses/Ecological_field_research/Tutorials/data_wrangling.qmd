@@ -1,0 +1,417 @@
+---
+title: "Tutorial 1: Data wrangling in R"
+author:
+  - name: Benjamin Delory
+    orcid: 0000-0002-1190-8060
+    email: b.m.m.delory@uu.nl
+    affiliations:
+      - name: Copernicus institute of sustainable development, Utrecht University
+image: /Images/Cover_R_for_Data_Science.jpg
+---
+
+## About this tutorial
+
+Welcome to this tutorial on data wrangling in R!
+
+In this tutorial, **our goal is to provide you with basic tools for efficiently managing, tidying, and transforming datasets in R.** Whether you are working with ecological data for exploration or analysis, a significant portion of your code will focus on tasks like importing data, organizing variables, computing new ones, and filtering data for statistical analyses and plotting. This tutorial is all about mastering these fundamental skills!
+
+Let's start by getting to know the data we are going to work with a little better.
+
+## Ecological field data used in this tutorial
+
+In this tutorial, we will import, tidy and transform vegetation data collected between April and May 2024 as part of the Ecological Field Research course at Utrecht University. Students went out into the field and collected vegetation data in four different habitats around Utrecht: a grassland, a forest, a heathland and a peatland. At each site, the students established 10 plots (4 m²) at two different locations and recorded the percent cover of each species in the plots. Some species, such as grasses, were recorded at functional group level.
+
+## Load R packages
+
+Most of the functions we need for the rest of this tutorial are available in R packages from the *tidyverse* collection. We will also need the `kable()` function from the *knitr* package. You can load *tidyverse* and *knitr* using `library()`.
+
+```{r}
+#| eval: true 
+#| echo: true 
+#| warning: false 
+#| message: false  
+
+library(tidyverse)
+library(knitr)
+```
+
+## Importing data
+
+The first thing to do after opening RStudio is to import some data to work with. There are a number of ways to do this depending on the input file format. We will focus on just a few of them here.
+
+You can download the data manually (either from Brightspace or from GitHub), but you can also import the data directly from Github using an R function called `read_csv()`. Let's give it a try.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+#URL to access the data
+
+url <- "https://raw.github.com/BenjaminDelory/GEO2-2439/master/Data/data_vegetation.csv"
+
+#Import data in R
+
+data <- readr::read_csv(url)
+```
+
+The notation `readr::read_csv()` means that we want to use the function `read_csv()` contained in the *readr* R package. This notation is very useful because it is not uncommon to have different R functions from different packages with the same name. It is an easy way to make sure that the right function is used for your analysis.
+
+There are quite a few functions available in R to import data. Your choice will mainly depend on the file format used to store data. For instance, if your data is stored in a csv file (i.e., comma separated values), then `read_csv()` is a good choice. A more general option that would work well for most data stored in text files is `read_delim()`. If the data is stored in Excel files (.xlsx), you can use `read_excel()` to import data into R.
+
+In RStudio, you can see how each data frame looks like using `View()`.
+
+```{r}
+#| eval: false
+#| echo: true
+#| warning: false
+#| message: false
+
+View(data)
+```
+
+You can see that the dataset consists of a number of observations (rows) of 7 variables (columns). These variables are:
+
+-   **Date**: the sampling date (YYYY-MM-DD)
+-   **Student**: the student ID number
+-   **Site**: the site name (4 levels: A_grassland, B_forest, C_heathland, D_peatland)
+-   **Location**: the location within a site (2 levels: 1 or 2)
+-   **Plot**: the plot ID number (in each site, plots were labelled from 1 to 20)
+-   **Species**: the plant species name (or species group name)
+-   **Cover**: the percent cover (numeric value between 0 and 100)
+
+## Tidying data
+
+::: callout-important
+## What's make a dataset tidy?
+
+A **tidy dataset** follows these [three rules]{.underline}:
+
+1.  Each variable is a column and each column is a variable
+2.  Each observation is a row and each row is an observation
+3.  Each value is a cell and each cell is a single value
+
+All packages in the *tidyverse* are designed to work with tidy data. This section is all about learning how to make your data tidy.
+:::
+
+### Extracting data from strings
+
+In our dataset, the Site column contains two different pieces of information: the site code (A, B, C, or D), and the habitat type (Grassland, Forest, Heathland, Peatland). How can we store each piece of information in a specific column? The short answer is by using `separate_wider_position()` and/or `separate_wider_delim()`. These functions are very useful when several important variables are pasted together in a single string, which is generally the case when you use barcodes to make sample processing faster and less prone to human error. Let's see how it works.
+
+We are going to separate the site code (which is located on the left side of the underscore) from the habitat type (located on the right side of the underscore). As the underscore acts as a delimiter, we will use `separate_wider_delim()` to split the Site column into two new columns (SiteCode and Habitat).
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data <- separate_wider_delim(data,
+                             cols = "Site",
+                             delim="_",
+                             names=c("SiteCode", "Habitat"),
+                             cols_remove=TRUE) #Do not keep Plot column in the data
+```
+
+The function `separate_wider_position()` works in a similar way, except that it splits character strings at fixed widths instead of splitting it based on the position of a delimiter.
+
+One important note before moving on to the next section. When you are writing R code, there isn't usually just one way of writing it. Consider what we have just done: it is possible to write your code in a more compact and efficient way, while still performing the same operations. This requires using **the pipe**.
+
+::: callout-tip
+## The pipe: \|\>
+
+In *tidyverse*, each action is associated to a specific verb. For instance, `filter()` is used to filter data, `select()` is used to select specific columns, `rename()` is used to rename variables, `mutate()` is used to transform variables, etc. When working with ecological data, it is very common to have to perform more than one action. In this case, you need to combine several verbs, which is best done using the pipe. The pipe works as follows: it passes the thing on its left to the function on its right. This means that writing f(x, y) is equivalent to x \|\> f(y).
+
+To add the pipe to your code, use the following keyboard shortcut: **Ctrl/Cmd + Shift + M**
+
+Before starting using the pipe, go to Tools --\> Global Options... --\> Code, and make sure that the "Use native pipe operator" is checked. This requires R.4.1.+.
+:::
+
+Let's give it a try and rewrite the code we wrote to separate strings using the pipe. This time, we are also going to use `mutate()` to convert Habitat as a factor. We will also use `rename()` to rename "SiteCode" into "Site_code".
+
+First, we need to recreate the data we started working with.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+#Recreate starting dataset
+
+data <- readr::read_csv(url)
+```
+
+Now we can rewrite our code using the pipe.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+#Extract information from the Site column using the pipe
+
+data <- data |> 
+  separate_wider_delim(cols = "Site",
+                       delim="_",
+                       names=c("SiteCode", "Habitat"),
+                       cols_remove=TRUE) |> 
+  mutate(Habitat=as.factor(Habitat)) |> 
+  rename(Site_code=SiteCode)
+```
+
+Let's take a quick look at the first ten rows of our dataset using `head().` We can also use `kable()` in the *knitr* package to produce a nice looking table in your R console.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+kable(head(data, n = 10))
+```
+
+### Widening and lengthening data
+
+**What is meant by widening and lengthening data?**
+
+Widening means increasing the number of columns and reducing the number of rows in your dataset. Lengthening is the opposite: increasing the number of rows and reducing the number of columns.
+
+**Why would we want to widen or lengthen our dataset?**
+
+Let's take our vegetation data as an example. The Cover column contains the percent cover measured on all species in all plots. In some cases, however, we may wish to focus our analysis on specific species. In that case, it would be easier to fit statistical models if the cover of each species is stored as a separate variable in our dataset. This requires widening our data to have as many columns storing cover data as species in our dataset. The best way to do this is to use `pivot_wider()`. If your goal is to lengthen your data, `pivot_longer()` is the way to go. Let's see how these two functions work.
+
+First, let's use `pivot_wider()` to add as many columns as there are plant species in our dataset. We will need to use four arguments of this function: `names_from` (which column to get the name of the output columns), `values_from` (which column to get the cell values from), `values_fill` (a value specifying the value to be used to replace missing values), and `values_fn` (a function applied to the value in each cell in the output).
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+#Use pivot_wider so that the cover of each species is stored as a separate variable
+
+data_wide <- data |> 
+  pivot_wider(names_from = Species, #Species names will be used as column names
+              values_from = Cover, #Cover values are stored in the Cover column
+              values_fill = 0, #Replace missing values by zero
+              values_fn = mean) #Calculate the average cover value of a species in a plot if there is more than one occurrence
+```
+
+If we use `dim()` to check the dimensions of our dataset, we can see that it contains 3941 rows and 139 columns.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+dim(data_wide)
+```
+
+Now let's use `pivot_longer()` on our widened dataset to bring it back to how it was before. This time, you will only need three arguments: `cols` (columns to pivot into a longer format), `names_to` (a character vector specifying the new column to create from the information stored in the column names of `data` specified by `cols`), and `values_to` (a string specifying the name of the column to create from the data stored in cell values).
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_long <- data_wide |> 
+  pivot_longer(cols = `Achillea_millefolium`:`Athyrium_sp`, #From column X to column Y
+               names_to = "Species", #Store species names in Species column
+               values_to = "Cover") #Store cover data in Cover column
+```
+
+Note that this new dataset has the same structure as our initial dataset `(data`), but contains many more rows. You can check this using `dim()` or `nrow()`. This is due to the fact that `data_long` now includes many null values for species that were not detected in plots during vegetation surveys.
+
+## Transforming data
+
+### R operators
+
+Before diving into this chapter, it is useful to remember the main relational and logical operators in R. This can be useful when you need to define conditions to select specific rows in your data, for example. This happens very frequently when programming in R.
+
+| Operators | Description              | Type       |
+|-----------|--------------------------|------------|
+| \<        | Less than                | Relational |
+| \>        | Greater than             | Relational |
+| \<=       | Less than or equal to    | Relational |
+| \>=       | Greater than or equal to | Relational |
+| ==        | Equal to                 | Relational |
+| !=        | Not equal to             | Relational |
+| !         | NOT                      | Logical    |
+| &         | AND                      | Logical    |
+| \|        | OR                       | Logical    |
+
+: Relational and logical operators in R
+
+### Filtering data
+
+Filtering allows you to select specific rows in your dataset based on column values. This is particularly useful if you only want to work on specific factor levels. For example, we might be interested in working only with grassland plot at location 1. We can do this using `filter()`.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_filtered <- data |> 
+  filter(Habitat == "grassland" & Location == 1) #Select grassland data only
+```
+
+Now here is a little exercise. What R code would you write to select only the rows associated with the data measured at location 2 in the forest and peatland plots? Note that the same result can be obtained using different R codes! Try writing such an R code yourself and then check the answer below. Have a look at the table of R operators above to help you.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+#Option 1
+
+data_filtered <- data |> 
+  filter(Location == 2) |> 
+  filter(Habitat == "forest" | Habitat == "peatland")
+
+#Option 2
+
+data_filtered <- data |> 
+  filter(Location != 1) |> 
+  filter(Habitat != "grassland" & Habitat != "heathland")
+
+#Option 3
+
+data_filtered <- data |> 
+  filter(Location == 2) |> 
+  filter(Habitat %in% c("forest", "peatland"))
+```
+
+### Arranging data
+
+Arranging means sorting the rows in your dataset based on the value of other columns. You can do this using `arrange()`. Let's modify our vegetation data by sorting species alphabetically within each plot.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_arranged <- data |> 
+  arrange(Species, Plot, Location, Site_code)
+```
+
+By default, numeric values are sorted from the smallest to the greatest values. If you want to do the opposite, you can use `desc()` within `arrange()`. For example, let's reuse the code we've just written, but this time let's sort the species in alphabetical order within each plot and in descending order of cover values.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_arranged <- data |> 
+  arrange(Species, Plot, Location, Site_code, desc(Cover))
+```
+
+Check what happened to the dataset using `View()`.
+
+### Selecting variables
+
+If you have a very large dataset, with hundreds or thousands of variables, you may want to subset your data and only keep the variables that interest you the most. This is done using `select()`. You can use the same function to selectively remove columns from your dataset.
+
+As an example, let's use the extended/wider version of the dataset we created earlier and select all the variables related to our experimental design (Date, Habitat, Location, Plot), as well as the columns containing Cover data for the following species: *Calluna vulgaris*, *Caltha palustris*, *Sanguisorba minor*, and *Sorbus aucuparia*.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_subset <- data_wide |> 
+  select(Date, Habitat, Location, Plot,
+         Calluna_vulgaris,
+         Caltha_palustris,
+         Sanguisorba_minor,
+         Sorbus_aucuparia)
+```
+
+### Transforming variables
+
+Transforming variables is certainly one of the most common operations that data scientists do when preparing data for analysis. If you want to calculate new variables from the ones that are already present in your dataset, this is precisely what `mutate()` does.
+
+In our vegetation data, the cover of each species in a plot is expressed in percent (a number between 0 and 1). In some situations, it may be useful to express these data on a scale between 0 and 1. Let's use `mutate()` to add a new column (Std_cover) in our dataset (`data`). We can simply do this by dividing the original cover values by 100. In `mutate()`, the arguments `.before` and `.after` allow you to control where you want your new variables to be inserted in your dataset.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data <- data |> 
+  mutate(Std_cover=Cover/100, #Scale from 0 to 1
+         .after = "Cover") #Specify that we want this new column to be after the Cover column
+```
+
+### Summarise variables
+
+Lastly, let's have a look at the `summarise()` function. As its name suggests, this function allows you to calculate summary statistics for groups present in your dataset. The output of `summarise()` is a data frame with as many rows as groups in your data, with desired summary statistics provided for each group.
+
+Before using `summarise()`, remember to use `group_by()` to divide your dataset into groups that are of interest for your analysis.
+
+Let's combine `group_by()` and `summarise()` to calculate the average cover of each species in a plot. We can do this by calculating the average of the cover values measured for each species by all the students who worked on a specific site/location on a specific date (Avg_cover). You should also calculate the standard deviation (Sd_cover) and the number of observations (n_Cover) used to calculate these statistical parameters. We are going to do all this using the `data` object as a starting point.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_summary <- data |> 
+  group_by(Date, Habitat, Location, Plot, Species) |> #Define grouping factors in your data
+  summarise(Avg_cover=mean(Cover), #Calculate summary statistics
+            Sd_cover=sd(Cover),
+            n_cover=length(Cover)) 
+```
+
+Check your summary table using `View()`.
+
+## Challenge to do at home
+
+Write a piece of R code to do the following (make sure you use the pipe!):
+
+-   **Step 1**: Using the `data` object created at the beginning of this tutorial, select only the rows of data recorded on 2024-5-27 at location 1 of the grassland site and location 2 of the peatland site. [**Tip**]{.underline}: use parentheses to separate conditional statements.
+
+-   **Step 2**: For this subset of data, transform the percent cover data so that all cover values are between 0 and 1.
+
+-   **Step 3**: Using this transformed percent cover data, calculate the mean and standard error for the cover value of each species (calculate these summary statistics for all plots and student observations). Remember that the standard error is the standard deviation divided by the square root of the number of observations.
+
+-   **Step 4**: Keep only the rows with at least n=5 (i.e., one one observation is available for a particular species).
+
+-   **Step 5**: Within each habitat type, rank the species from greatest to least cover.
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+data_challenge <- data |> 
+  filter(Date == "2024-5-27") |> #Step 1
+  filter((Habitat == "grassland" & Location == 1) | (Habitat == "peatland" & Location == 2)) |> #Step 1
+  mutate(Std_cover=Cover/100, #Step 2
+         .after = "Cover") |> 
+  group_by(Habitat, Location, Species) |> #Step 3
+  summarise(Avg_cover=mean(Std_cover), #Step 3
+            Sd_cover=sd(Std_cover), #Step 3
+            n_cover=length(Std_cover), #Step 3
+            Se_cover = sd(Std_cover)/sqrt(length(Std_cover))) |> #Step 3
+  filter(n_cover >= 5) |> #Step 4
+  arrange(Habitat, desc(Avg_cover)) #Step 5
+```
+
+Check that your summary table meets all the above criteria using `View()`.
+
+## Take-home message
+
+Data wrangling is a very important part of any data analysis pipeline. This tutorial aimed to give you a brief overview of the main functions available in R for importing, tidying and transforming data. Of course, this tutorial is far from exhaustive and many other tools are available. We encourage you to continue learning and discovering new functions available in the *tidyverse* by using the popular book [R for Data Science](https://r4ds.hadley.nz/).

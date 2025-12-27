@@ -31,5 +31,98 @@
   },
   "Mapping_spatial_data.qmd": {
     "Mapping_spatial_data.html": "462f68df"
+  },
+  "Courses/Ecological_field_research/index.qmd": {
+    "index.html": "4df337c1"
+  },
+  "Courses/Ecological_field_research/Tutorials/data_analysis.qmd": {
+    "data_analysis.html": "0043b2c5"
+  },
+  "Courses/Ecological_field_research/Tutorials/data_exploration.qmd": {
+    "data_exploration.html": "37be28bd"
+  },
+  "Courses/Ecological_field_research/Tutorials/data_visualisation.qmd": {
+    "data_visualisation.html": "d2dd281d"
+  },
+  "Courses/Ecological_field_research/Tutorials/data_wrangling.qmd": {
+    "data_wrangling.html": "cfb8718b"
+  },
+  "Courses/Ecological_field_research/Tutorials/Mapping_spatial_data.qmd": {
+    "Mapping_spatial_data.html": "a5e2949c"
+  },
+  "Courses/Ecological_field_research/Tutorials/prerequisites.qmd": {
+    "prerequisites.html": "c50fd04c"
+  },
+  "Courses/Ecological_field_research/Tutorials/quantifying_biodiversity.qmd": {
+    "quantifying_biodiversity.html": "bba9e866"
+  },
+  "Courses/Ecological_field_research/Tutorials/R_basics.qmd": {
+    "R_basics.html": "d0c4a07d"
+  },
+  "Courses/index.qmd": {
+    "index.html": "b6db5aef"
+  },
+  "Courses/Statistics_GSS/Tutorials/index.qmd": {
+    "index.html": "bdca2834"
+  },
+  "Learn_Python/index.qmd": {
+    "index.html": "a650c4ef"
+  },
+  "Learn_R/index.qmd": {
+    "index.html": "48f28e7e"
+  },
+  "Courses/Statistics_GSS/index.qmd": {
+    "index.html": "cbebea03"
+  },
+  "Courses/Ecological_field_research/Tutorials/index.qmd": {
+    "index.html": "631116ec"
+  },
+  "Courses/Ecological_field_research/Tutorials/prologue.qmd": {
+    "prologue.html": "97c203e1"
+  },
+  "Courses/Statistics_GSS/Tutorials/association_continuous_discrete_data.qmd": {
+    "association_continuous_discrete_data.html": "42bba2df"
+  },
+  "Courses/Statistics_GSS/Tutorials/association_nominal_variables.qmd": {
+    "association_nominal_variables.html": "ced3c2f8"
+  },
+  "Courses/Statistics_GSS/Tutorials/comparing_multiple_groups.qmd": {
+    "comparing_multiple_groups.html": "40f1fa87"
+  },
+  "Courses/Statistics_GSS/Tutorials/comparing_two_groups_part1.qmd": {
+    "comparing_two_groups_part1.html": "9139c5d8"
+  },
+  "Courses/Statistics_GSS/Tutorials/comparing_two_groups_part2.qmd": {
+    "comparing_two_groups_part2.html": "ef1a17af"
+  },
+  "Courses/Statistics_GSS/Tutorials/contrasts_and_two_way_ANOVA.qmd": {
+    "contrasts_and_two_way_ANOVA.html": "7e8637f2"
+  },
+  "Courses/Statistics_GSS/Tutorials/descriptive_statistics.qmd": {
+    "descriptive_statistics.html": "35f8ae28"
+  },
+  "Courses/Statistics_GSS/Tutorials/getting_to_know_R.qmd": {
+    "getting_to_know_R.html": "546f265e"
+  },
+  "Courses/Statistics_GSS/Tutorials/intro_to_mixed_models.qmd": {
+    "intro_to_mixed_models.html": "2ba533eb"
+  },
+  "Courses/Statistics_GSS/Tutorials/linear_regression_part1.qmd": {
+    "linear_regression_part1.html": "6f42c84a"
+  },
+  "Courses/Statistics_GSS/Tutorials/linear_regression_part2.qmd": {
+    "linear_regression_part2.html": "252ba2e1"
+  },
+  "Courses/Statistics_GSS/Tutorials/logistic_regression.qmd": {
+    "logistic_regression.html": "68aadb31"
+  },
+  "Courses/Statistics_GSS/Tutorials/prerequisites.qmd": {
+    "prerequisites.html": "3d677c3a"
+  },
+  "Courses/Statistics_GSS/Tutorials/principal_component_analysis.qmd": {
+    "principal_component_analysis.html": "608874d8"
+  },
+  "Courses/Statistics_GSS/Tutorials/prologue.qmd": {
+    "prologue.html": "75bb872f"
   }
 }

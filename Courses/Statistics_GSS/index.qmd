@@ -1,0 +1,27 @@
+---
+title: Statistics GSS
+---
+
+## Course code
+
+GEO2-2428
+
+## Course coordinator
+
+[Benjamin Delory](https://www.uu.nl/staff/BMMDelory)
+
+## Course description
+
+Sustainability research is complex and involves several questions linked to social and ecological dimensions. Many of those questions need to be answered based on quantitative data (=empirical evidence). Therefore, in this course we will focus on how to analyse quantitative data using statistical methods. The objective of the course is to understand and apply statistical analysis methods and techniques with a focus on sustainability research.
+
+## Course objectives
+
+1.  Understand the theoretical and mathematical basis of statistical methods
+
+2.  Determine the appropriate statistical analysis method for a research question
+
+3.  Conduct the statistical analysis in R
+
+4.  Interpret the findings of the statistical analysis
+
+5.  Report the results of statistical analyses in a clear and accurate way

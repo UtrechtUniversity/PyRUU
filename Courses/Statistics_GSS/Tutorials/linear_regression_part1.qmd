@@ -1,0 +1,26 @@
+---
+title: "Tutorial 8: Linear regression (part 1)"
+author:
+  - name: Benjamin Delory
+    orcid: 0000-0002-1190-8060
+    email: b.m.m.delory@uu.nl
+    affiliations:
+      - name: Copernicus institute of sustainable development, Utrecht University
+  - name: Natalie Davis
+    orcid: 0000-0002-2678-0389
+    email: n.a.davis@vu.nl
+    affiliations:
+      - name: Amsterdam sustainability institute, Vrije Universiteit Amsterdam
+  - name: Heitor Mancini Teixeira
+    orcid: 0000-0001-6992-0671
+    email: heitor.teixeira@ufv.br
+    affiliations:
+      - name: Departamento de Solos Centro de Ciências Agrárias, Universidade Federal de Vicosa, Brazil
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+image: /Images/Rlogo.png
+---
+
+Add text

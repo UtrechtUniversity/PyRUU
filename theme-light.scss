@@ -1,8 +1,15 @@
 /*-- scss:defaults --*/
-  // Base document colors
+// Base document colors
 $link-color: #C00A35;
-$sidebar-bg: #FFCD00;
+$navbar-bg: #FFCD00;
 $code-color: #C00A35;
-  
-  // Code blocks
+
+// Code blocks
 $code-block-bg-alpha: -.8;
+
+.navbar-brand img {
+    height: 30px;
+    /* adjust as needed */
+    max-height: none;
+    /* overrides Bootstrap limit */
+}

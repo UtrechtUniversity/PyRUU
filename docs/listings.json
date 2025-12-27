@@ -1,0 +1,30 @@
+[
+  {
+    "listing": "/Courses/Statistics_GSS/Tutorials/index.html",
+    "items": [
+      "/Courses/Statistics_GSS/Tutorials/getting_to_know_R.html",
+      "/Courses/Statistics_GSS/Tutorials/descriptive_statistics.html",
+      "/Courses/Statistics_GSS/Tutorials/comparing_two_groups_part1.html",
+      "/Courses/Statistics_GSS/Tutorials/comparing_two_groups_part2.html",
+      "/Courses/Statistics_GSS/Tutorials/comparing_multiple_groups.html",
+      "/Courses/Statistics_GSS/Tutorials/contrasts_and_two_way_ANOVA.html",
+      "/Courses/Statistics_GSS/Tutorials/association_continuous_discrete_data.html",
+      "/Courses/Statistics_GSS/Tutorials/linear_regression_part1.html",
+      "/Courses/Statistics_GSS/Tutorials/linear_regression_part2.html",
+      "/Courses/Statistics_GSS/Tutorials/intro_to_mixed_models.html",
+      "/Courses/Statistics_GSS/Tutorials/logistic_regression.html",
+      "/Courses/Statistics_GSS/Tutorials/association_nominal_variables.html",
+      "/Courses/Statistics_GSS/Tutorials/principal_component_analysis.html"
+    ]
+  },
+  {
+    "listing": "/Courses/Ecological_field_research/Tutorials/index.html",
+    "items": [
+      "/Courses/Ecological_field_research/Tutorials/data_wrangling.html",
+      "/Courses/Ecological_field_research/Tutorials/data_visualisation.html",
+      "/Courses/Ecological_field_research/Tutorials/quantifying_biodiversity.html",
+      "/Courses/Ecological_field_research/Tutorials/data_exploration.html",
+      "/Courses/Ecological_field_research/Tutorials/data_analysis.html"
+    ]
+  }
+]

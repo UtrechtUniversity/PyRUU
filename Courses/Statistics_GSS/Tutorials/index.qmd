@@ -1,0 +1,21 @@
+---
+title: Tutorials
+listing: 
+    contents:
+        - getting_to_know_R.qmd
+        - descriptive_statistics.qmd
+        - comparing_two_groups_part1.qmd
+        - comparing_two_groups_part2.qmd
+        - comparing_multiple_groups.qmd
+        - contrasts_and_two_way_ANOVA.qmd
+        - association_continuous_discrete_data.qmd
+        - linear_regression_part1.qmd
+        - linear_regression_part2.qmd
+        - intro_to_mixed_models.qmd
+        - logistic_regression.qmd
+        - association_nominal_variables.qmd
+        - principal_component_analysis.qmd
+    type: grid
+    fields: [image, title, author]
+    sort: false
+---

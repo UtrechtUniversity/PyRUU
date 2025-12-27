@@ -1,0 +1,12 @@
+---
+title: Tutorials
+listing: 
+    contents:
+        - data_wrangling.qmd
+        - data_visualisation.qmd
+        - quantifying_biodiversity.qmd
+        - data_exploration.qmd
+        - data_analysis.qmd
+    type: grid
+    fields: [image, title, author]
+---
