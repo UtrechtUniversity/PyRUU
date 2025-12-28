@@ -124,5 +124,8 @@
   },
   "Courses/Statistics_GSS/Tutorials/prologue.qmd": {
     "prologue.html": "75bb872f"
+  },
+  "Courses/Statistics_GSS/Demos/ttest-demo.qmd": {
+    "ttest-demo.html": "641c4619"
   }
 }
