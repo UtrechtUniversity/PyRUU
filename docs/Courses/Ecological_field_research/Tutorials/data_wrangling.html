@@ -309,14 +309,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-courses">    
         <li>
-    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
-</i> 
- <span class="dropdown-text">Statistics GSS</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-tree-fill" role="img">
 </i> 
  <span class="dropdown-text">Ecological field research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Natural_processes/index.html"><i class="bi bi-arrow-repeat" role="img">
+</i> 
+ <span class="dropdown-text">Natural processes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
+</i> 
+ <span class="dropdown-text">Statistics GSS</span></a>
   </li>  
     </ul>
   </li>
@@ -535,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Most of the functions we need for the rest of this tutorial are available in R packages from the <em>tidyverse</em> collection. We will also need the <code>kable()</code> function from the <em>knitr</em> package. You can load <em>tidyverse</em> and <em>knitr</em> using <code>library()</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -547,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can download the data manually (either from Brightspace or from GitHub), but you can also import the data directly from Github using an R function called <code>read_csv()</code>. Let’s give it a try.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#URL to access the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.github.com/BenjaminDelory/GEO2-2439/master/Data/data_vegetation.csv"</span></span>
@@ -562,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In RStudio, you can see how each data frame looks like using <code>View()</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -604,7 +609,7 @@ What’s make a dataset tidy?
 <p>We are going to separate the site code (which is located on the left side of the underscore) from the habitat type (located on the right side of the underscore). As the underscore acts as a delimiter, we will use <code>separate_wider_delim()</code> to split the Site column into two new columns (SiteCode and Habitat).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">separate_wider_delim</span>(data,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">cols =</span> <span class="st">"Site"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">delim=</span><span class="st">"_"</span>,</span>
@@ -633,7 +638,7 @@ The pipe: |&gt;
 <p>First, we need to recreate the data we started working with.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recreate starting dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -642,7 +647,7 @@ The pipe: |&gt;
 <p>Now we can rewrite our code using the pipe.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract information from the Site column using the pipe</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
@@ -657,7 +662,7 @@ The pipe: |&gt;
 <p>Let’s take a quick look at the first ten rows of our dataset using <code>head().</code> We can also use <code>kable()</code> in the <em>knitr</em> package to produce a nice looking table in your R console.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -799,7 +804,7 @@ The pipe: |&gt;
 <p>First, let’s use <code>pivot_wider()</code> to add as many columns as there are plant species in our dataset. We will need to use four arguments of this function: <code>names_from</code> (which column to get the name of the output columns), <code>values_from</code> (which column to get the cell values from), <code>values_fill</code> (a value specifying the value to be used to replace missing values), and <code>values_fn</code> (a function applied to the value in each cell in the output).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use pivot_wider so that the cover of each species is stored as a separate variable</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data_wide <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
@@ -812,7 +817,7 @@ The pipe: |&gt;
 <p>If we use <code>dim()</code> to check the dimensions of our dataset, we can see that it contains 3941 rows and 139 columns.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -822,7 +827,7 @@ The pipe: |&gt;
 <p>Now let’s use <code>pivot_longer()</code> on our widened dataset to bring it back to how it was before. This time, you will only need three arguments: <code>cols</code> (columns to pivot into a longer format), <code>names_to</code> (a character vector specifying the new column to create from the information stored in the column names of <code>data</code> specified by <code>cols</code>), and <code>values_to</code> (a string specifying the name of the column to create from the data stored in cell values).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data_wide <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">`</span><span class="at">Achillea_millefolium</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Athyrium_sp</span><span class="st">`</span>, <span class="co">#From column X to column Y</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Species"</span>, <span class="co">#Store species names in Species column</span></span>
@@ -900,7 +905,7 @@ The pipe: |&gt;
 <p>Filtering allows you to select specific rows in your dataset based on column values. This is particularly useful if you only want to work on specific factor levels. For example, we might be interested in working only with grassland plot at location 1. We can do this using <code>filter()</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Habitat <span class="sc">==</span> <span class="st">"grassland"</span> <span class="sc">&amp;</span> Location <span class="sc">==</span> <span class="dv">1</span>) <span class="co">#Select grassland data only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -908,7 +913,7 @@ The pipe: |&gt;
 <p>Now here is a little exercise. What R code would you write to select only the rows associated with the data measured at location 2 in the forest and peatland plots? Note that the same result can be obtained using different R codes! Try writing such an R code yourself and then check the answer below. Have a look at the table of R operators above to help you.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Option 1</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
@@ -934,7 +939,7 @@ The pipe: |&gt;
 <p>Arranging means sorting the rows in your dataset based on the value of other columns. You can do this using <code>arrange()</code>. Let’s modify our vegetation data by sorting species alphabetically within each plot.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_arranged <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Species, Plot, Location, Site_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -942,7 +947,7 @@ The pipe: |&gt;
 <p>By default, numeric values are sorted from the smallest to the greatest values. If you want to do the opposite, you can use <code>desc()</code> within <code>arrange()</code>. For example, let’s reuse the code we’ve just written, but this time let’s sort the species in alphabetical order within each plot and in descending order of cover values.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_arranged <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Species, Plot, Location, Site_code, <span class="fu">desc</span>(Cover))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -955,7 +960,7 @@ The pipe: |&gt;
 <p>As an example, let’s use the extended/wider version of the dataset we created earlier and select all the variables related to our experimental design (Date, Habitat, Location, Plot), as well as the columns containing Cover data for the following species: <em>Calluna vulgaris</em>, <em>Caltha palustris</em>, <em>Sanguisorba minor</em>, and <em>Sorbus aucuparia</em>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_subset <span class="ot">&lt;-</span> data_wide <span class="sc">|&gt;</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date, Habitat, Location, Plot,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>         Calluna_vulgaris,</span>
@@ -971,7 +976,7 @@ The pipe: |&gt;
 <p>In our vegetation data, the cover of each species in a plot is expressed in percent (a number between 0 and 1). In some situations, it may be useful to express these data on a scale between 0 and 1. Let’s use <code>mutate()</code> to add a new column (Std_cover) in our dataset (<code>data</code>). We can simply do this by dividing the original cover values by 100. In <code>mutate()</code>, the arguments <code>.before</code> and <code>.after</code> allow you to control where you want your new variables to be inserted in your dataset.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Std_cover=</span>Cover<span class="sc">/</span><span class="dv">100</span>, <span class="co">#Scale from 0 to 1</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">.after =</span> <span class="st">"Cover"</span>) <span class="co">#Specify that we want this new column to be after the Cover column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -985,7 +990,7 @@ The pipe: |&gt;
 <p>Let’s combine <code>group_by()</code> and <code>summarise()</code> to calculate the average cover of each species in a plot. We can do this by calculating the average of the cover values measured for each species by all the students who worked on a specific site/location on a specific date (Avg_cover). You should also calculate the standard deviation (Sd_cover) and the number of observations (n_Cover) used to calculate these statistical parameters. We are going to do all this using the <code>data</code> object as a starting point.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_summary <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date, Habitat, Location, Plot, Species) <span class="sc">|&gt;</span> <span class="co">#Define grouping factors in your data</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_cover=</span><span class="fu">mean</span>(Cover), <span class="co">#Calculate summary statistics</span></span>
@@ -1008,7 +1013,7 @@ The pipe: |&gt;
 </ul>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_challenge <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2024-5-27"</span>) <span class="sc">|&gt;</span> <span class="co">#Step 1</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>((Habitat <span class="sc">==</span> <span class="st">"grassland"</span> <span class="sc">&amp;</span> Location <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|</span> (Habitat <span class="sc">==</span> <span class="st">"peatland"</span> <span class="sc">&amp;</span> Location <span class="sc">==</span> <span class="dv">2</span>)) <span class="sc">|&gt;</span> <span class="co">#Step 1</span></span>

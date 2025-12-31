@@ -337,14 +337,19 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-courses">    
         <li>
-    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
-</i> 
- <span class="dropdown-text">Statistics GSS</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-tree-fill" role="img">
 </i> 
  <span class="dropdown-text">Ecological field research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Natural_processes/index.html"><i class="bi bi-arrow-repeat" role="img">
+</i> 
+ <span class="dropdown-text">Natural processes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
+</i> 
+ <span class="dropdown-text">Statistics GSS</span></a>
   </li>  
     </ul>
   </li>
@@ -563,7 +568,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="load-r-packages">Load R packages</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
@@ -578,7 +583,7 @@ window.Quarto = {
 <p>You can download the data manually (either from Brightspace or from GitHub), but you can also import the data directly from Github using an R function called <code>read_csv()</code>. Let’s give it a try.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#URL to access the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.github.com/BenjaminDelory/GEO2-2439/master/Data/data_vegetation.csv"</span></span>
@@ -627,7 +632,7 @@ Note
 </ul>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_plot <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">"Deadwood"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">"Bare_ground"</span>) <span class="sc">|&gt;</span></span>
@@ -2268,7 +2273,7 @@ Note
 <p>Since we are interested in modelling the relationship between plant species diversity and habitat type, we first need to quantify plant species diversity in all plots. We will do this using Hill numbers (see tutorial on quantifying taxonomic diversity if you need to refresh your memory). To do this, we first need to calculate the <u><em>relative</em></u> abundance of all species in all plots. The simplest way to do this is to create a new column called <code>Total</code> in the dataset by summing the percent cover value of all species present in each plot, and then use this information to express all species data in relative form.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a new column called "Total"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data_plot <span class="ot">&lt;-</span> data_plot <span class="sc">|&gt;</span> </span>
@@ -2278,7 +2283,7 @@ Note
 <p>We can now reorganize the data into a more tidy format using the <code>pivot_longer()</code> function. What we want is a data set whose structure is similar to that of our original data, but with an extra column (<code>Total</code>). Since we have added several observations with zero values (which happens when a species is not present in a plot), we will end up with a dataset with many more rows than in our original data. But this does not matter, as we can easily filter out these values using <code>filter()</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reorganise data (tidy format) and filter out zero values</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data_plot <span class="ot">&lt;-</span> data_plot <span class="sc">|&gt;</span> </span>
@@ -2291,7 +2296,7 @@ Note
 <p>The next step is to calculate the relative abundance of each species in all plots by dividing <code>Abundance</code> by <code>Total</code>. We will store these relative abundance values in a new column: <code>Rel_abundance</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate species relative abundance</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data_plot <span class="ot">&lt;-</span> data_plot <span class="sc">|&gt;</span> </span>
@@ -2301,7 +2306,7 @@ Note
 <p>We are now ready to calculate Hill numbers. We will do this for three values of <em>q</em> (0, 1, and 2). We can easily do this using <code>group_by()</code> and <code>summarise()</code>. Let’s store this data set into a new R object called <code>data_hill</code>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate Hill numbers at q=0, q=1, and q=2</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data_hill <span class="ot">&lt;-</span> data_plot <span class="sc">|&gt;</span> </span>
@@ -2323,7 +2328,7 @@ Note
 <p>Use <code>pivot_longer()</code> to reorganise the dataset and create a column called <code>q</code> to store all diversity order values (0, 1, and 2) and a column called <code>diversity</code> to store the effective number of species in each community. In <code>pivot_longer()</code>, you will need to use two extra arguments: <code>names_prefix = "q"</code> (this will make sure to remove the letter “q” from “q0”, “q1”, and “q2”) and <code>names_transform = as.numeric</code> (to convert “0”, “1” and “2” into numeric values).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reorganise data ina tidy format</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data_hill_long <span class="ot">&lt;-</span> data_hill <span class="sc">|&gt;</span> </span>
@@ -2419,7 +2424,7 @@ Note
 <p>Using what you have learned in the previous tutorials, create a high-quality figure that answers the research question. Feel free to personalize your plot in any way you think best communicates the results (you do not necessarily have to produce the same plot as below).</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add "q=" in front of diversity order values</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data_hill_long<span class="sc">$</span>q <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"q="</span>, data_hill_long<span class="sc">$</span>q, <span class="at">sep =</span> <span class="st">""</span>)</span>
@@ -2463,7 +2468,7 @@ Note
 <p>Let’s fit a linear model to plant diversity data at q=0 (i.e., species richness) using Site as an explanatory variable.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit simple linear regression model</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Only consider q=0 for now</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2478,7 +2483,7 @@ Note
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">predicted =</span> <span class="fu">predict</span>(model1),</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">residuals =</span> <span class="fu">residuals</span>(model1)) <span class="sc">|&gt;</span> </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>predicted,</span>
@@ -2499,7 +2504,7 @@ Note
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -2539,7 +2544,7 @@ Relationship between <code>lm()</code> and <code>glm()</code>
 <p>Let’s fit a new model (this time a GLM) to our species richness data (q=0).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit a generalised linear model with a quasipoisson distribution</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(q0 <span class="sc">~</span> Site,</span>
@@ -2554,7 +2559,7 @@ Relationship between <code>lm()</code> and <code>glm()</code>
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">predicted =</span> <span class="fu">predict</span>(model2),</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">residuals =</span> <span class="fu">residuals</span>(model2)) <span class="sc">|&gt;</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>predicted,</span>
@@ -2575,7 +2580,7 @@ Relationship between <code>lm()</code> and <code>glm()</code>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -2596,7 +2601,7 @@ Relationship between <code>lm()</code> and <code>glm()</code>
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">summary</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -2604,7 +2609,7 @@ Relationship between <code>lm()</code> and <code>glm()</code>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -2640,7 +2645,7 @@ ExplainedDeviance = 100 \times \frac{NullDeviance - ResidualDeviance}{NullDevian
 \]</span></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>null_deviance <span class="ot">&lt;-</span> <span class="fu">summary</span>(model2)<span class="sc">$</span>null.deviance</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>residual_deviance <span class="ot">&lt;-</span> <span class="fu">summary</span>(model2)<span class="sc">$</span>deviance</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2658,7 +2663,7 @@ ExplainedDeviance = 100 \times \frac{NullDeviance - ResidualDeviance}{NullDevian
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">Anova</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -2666,7 +2671,7 @@ ExplainedDeviance = 100 \times \frac{NullDeviance - ResidualDeviance}{NullDevian
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -2696,7 +2701,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">emmeans</span>(<span class="at">object =</span> model2, </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">specs =</span> <span class="st">"Site"</span>, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">contr =</span> <span class="st">"pairwise"</span>), </span>
@@ -2707,7 +2712,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -2768,7 +2773,7 @@ Challenge to do at home
 </ul>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create table with annotations</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>annotations <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Site=</span><span class="fu">rep</span>(<span class="fu">unique</span>(data_hill_long<span class="sc">$</span>Site), <span class="dv">3</span>),</span>
@@ -2825,7 +2830,7 @@ Challenge to do at home
 <p>To obtain the dissimilarity matrix required for NMDS, we first need to reorganise our data so that each species has its own column and each ecological community has its own row (i.e., a site-by-species matrix). We already wrote the code to do this at the beginning of this tutorial.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_nmds <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">"Deadwood"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">"Bare_ground"</span>) <span class="sc">|&gt;</span></span>
@@ -4469,7 +4474,7 @@ Challenge to do at home
 <p>We will keep the default values for all other arguments. Store the results in an object named <code>nmds</code>. Do not forget to set a seed (using <code>set.seed()</code> for reproducibility).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>nmds <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(<span class="at">comm =</span> data_nmds[,<span class="dv">3</span><span class="sc">:</span><span class="fu">ncol</span>(data_nmds)],</span>
@@ -4687,7 +4692,7 @@ Run 110 stress 0.1512054
 <p>Another way to assess the quality of the configuration is to create a Shepard plot. A Shepard plot shows the relationship between ordination distances (i.e., distances in the configuration produced by the NMDS) and original distances. You can produce a Shepard plot using the <code>stressplot()</code> function in <em>vegan</em>. What can you conclude from this Shepard plot?</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stressplot</span>(nmds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -4704,7 +4709,7 @@ Run 110 stress 0.1512054
 <p>NMDS results are stored in our <code>nmds</code> object. You can extract the coordinates of each community using <code>nmds$points</code>. To make it easier to work with <em>ggplot2</em>, we will add these coordinates to our data frame (<code>data_nmds</code>).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data_nmds <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data_nmds, nmds<span class="sc">$</span>points)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(data_nmds, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -6360,7 +6365,7 @@ Run 110 stress 0.1512054
 <p>What can you conclude from this NMDS?</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_nmds <span class="sc">|&gt;</span> </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> MDS1,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> MDS2,</span>

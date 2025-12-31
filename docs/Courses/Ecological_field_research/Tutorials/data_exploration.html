@@ -338,14 +338,19 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-courses">    
         <li>
-    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
-</i> 
- <span class="dropdown-text">Statistics GSS</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-tree-fill" role="img">
 </i> 
  <span class="dropdown-text">Ecological field research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Natural_processes/index.html"><i class="bi bi-arrow-repeat" role="img">
+</i> 
+ <span class="dropdown-text">Natural processes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
+</i> 
+ <span class="dropdown-text">Statistics GSS</span></a>
   </li>  
     </ul>
   </li>
@@ -555,7 +560,7 @@ window.Quarto = {
 <p>Load <em>tidyverse</em>, <em>knitr</em>, and <em>corrplot</em>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -570,7 +575,7 @@ window.Quarto = {
 <p>Let’s start by loading the “SparrowsElphick.txt” dataset into R (use <code>read_delim()</code>). Have a look at how this dataset is structured using <code>View()</code> or <code>head()</code>. This dataset contains observations measured on 1295 sparrows. For the moment, we will look at just one response variable: wing length (expressed in millimeters). This variable is named “wingcrd” in the sparrows dataset.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data into R</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sparrows <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"Data_Zuur_et_al_2010/SparrowsElphick.txt"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -805,7 +810,7 @@ window.Quarto = {
 <p>Now use <em>ggplot2</em> to create a box plot using wing length as a response variable.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sparrows,</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y=</span>wingcrd))<span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
@@ -831,7 +836,7 @@ window.Quarto = {
 <p>A Cleveland plot is a method of choice for detecting outliers. To create a Cleveland plot, you just need to plot your variable of interest on the horizontal axis and the row number of your observations on the vertical axis. You can easily add a new column with the row number to your data using <code>add_column()</code>.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sparrows <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">row_number=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sparrows),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">.before=</span><span class="st">"wingcrd"</span>) <span class="sc">|&gt;</span> </span>
@@ -857,7 +862,7 @@ window.Quarto = {
 <p>Let’s continue our exploration of the sparrows data by looking at other response variables: Culmen length (culmen), Nalospi to bill tip (nalospi), Weight (wt), Wing length (wingcrd), Tarsus length (tarsus), and Head length (head). Before plotting, sort the sparrow observations by increasing weight values (to be consistent with Zuur et al, 2010). Then, create a figure with 6 panels, each displaying a Cleveland plot for each of these morphometric variables. You can do this using <code>facet_wrap()</code>. In <code>facet_wrap()</code>, set the <code>scales</code> argument to “free_x” to allow for different horizontal axis scales. Check what would happen if you keep <code>scales = "fixed"</code> (which is the default).</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sparrows <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(culmen, nalospi, wt, wingcrd, tarsus, head) <span class="sc">|&gt;</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(wt) <span class="sc">|&gt;</span> </span>
@@ -899,7 +904,7 @@ window.Quarto = {
 <p>Homogeneity of variance is an important assumption of regression-related techniques such as ANalysis Of VAriance (ANOVA). One way to check for this is to use a <strong>conditional box plot</strong>. Let’s create one using a new set of bird data. The “Godwits.txt” data file contains observations for 9 variables measured on 330 Hudsonian godwits (<em>Limosa haemastica</em>).</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data into R</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>godwits <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"Data_Zuur_et_al_2010/Godwits.txt"</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">col_select =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
@@ -1044,7 +1049,7 @@ window.Quarto = {
 </ul>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>godwits <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SEX <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SEX =</span> <span class="fu">replace</span>(SEX, SEX <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Female"</span>),</span>
@@ -1079,7 +1084,7 @@ window.Quarto = {
 <p>Let’s go back to the sparrows dataset. Use <em>ggplot2</em> to create a histogram of the weight (wt) of sparrows in June, July, and August. Use <code>geom_histogram()</code> to do this. What patterns do you observe?</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sparrows <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Month <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">&amp;</span> Month <span class="sc">&lt;=</span> <span class="dv">8</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Month=</span><span class="fu">replace</span>(Month, Month<span class="sc">==</span><span class="dv">6</span>, <span class="st">"June"</span>),</span>
@@ -1113,7 +1118,7 @@ window.Quarto = {
 <p>To create a frequency plot, we will use another dataset (“ElphickBirdData.txt”). This dataset contains 2035 observations of the number of waterbirds (AQBIRDS) observed in flooded rice fields.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data into R</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>waterbirds <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"Data_Zuur_et_al_2010/ElphickBirdData.txt"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1948,7 +1953,7 @@ window.Quarto = {
 <p>How many times is the number of waterbirds equal to zero in this dataset? Create a frequency plot to find out! Focus on observed values between 0 and 100, and do not forget to round them off (use <code>round()</code>).</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>waterbirds <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AQBIRDS <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">round</span>(AQBIRDS)))<span class="sc">+</span></span>
@@ -1995,7 +2000,7 @@ r=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
 </ul>
 <div class="cell">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data into R</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sparrows2 <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"Data_Zuur_et_al_2010/VegSamplesV1.txt"</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">col_select =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>)</span>
@@ -2267,7 +2272,7 @@ r=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
 <p>Now that the data have been imported into R, we can create a correlation plot to check for colinearity between the covariates we want to include in a statistical model. You can do this with the <code>corrplot()</code> or <code>corrplot.mixed()</code> function in the <em>corrplot</em> package.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(<span class="at">corr=</span><span class="fu">cor</span>(sparrows2[,<span class="fu">c</span>(<span class="st">"Avgmaxht"</span>,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"Avgdens"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"ht.thatch"</span>,</span>
@@ -2302,7 +2307,7 @@ r=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
 <p>The easiest way to find out how the relationship between a response variable of interest and a covariate looks like is to create a <strong>scatter plot</strong>. Let’s do this using the sparrows dataset we just used to look at colinearity. Using <em>ggplot2</em>, create a figure with multiple panels showing the relationship between the number of sparrows observed in a plot (Banded) and all covariates used in the previous section. In <em>tidyverse</em>, this is done by combining <code>pivot_longer()</code>, <code>geom_point()</code> and <code>facet_wrap()</code>. Let’s also add a smoother to each scatter plot to better visualise the relationships (use <code>geom_smooth()</code>). Give it a try!</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sparrows2 <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Banded,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         Avgmaxht,</span>
@@ -2348,7 +2353,7 @@ r=\frac{cov(X,Y)}{\sigma_X\sigma_Y}
 <p>Let’s visualise this! The best way to evaluate if interactions should be considered is to create a <strong>conditioning plot</strong> (or coplot). We can easily do this in <em>tidyverse</em> by combining <code>geom_point()</code> (to create scatter plots), <code>geom_smooth(method="lm")</code> (to add a linear model on top of each scatter plot), and <code>facet_grid()</code> (to create multiple panels, with males/females as rows, and June/July/August as columns). In the Sex column, males are labelled 4 and females 5. Only consider observations where SpeciesCode is equal to 1. Give it a try!</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Show me the R code</summary>
+<summary>Show me the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sparrows <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SpeciesCode <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wt, wingcrd, Month, Sex) <span class="sc">|&gt;</span> </span>

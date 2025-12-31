@@ -25,12 +25,15 @@ website:
       - text: "Courses"
         icon: mortarboard-fill
         menu: 
-          - text: "Statistics GSS"
-            href: Courses/Statistics_GSS/index.qmd
-            icon: bar-chart-line-fill
           - text: "Ecological field research"
             href: Courses/Ecological_field_research/index.qmd
             icon: tree-fill
+          - text: "Natural processes"
+            href: Courses/Natural_processes/index.qmd
+            icon: arrow-repeat
+          - text: "Statistics GSS"
+            href: Courses/Statistics_GSS/index.qmd
+            icon: bar-chart-line-fill
       - href: contact.qmd
         text: "Contact"
         icon: envelope-at-fill
@@ -73,6 +76,20 @@ website:
               - href: Courses/Ecological_field_research/Tutorials/data_analysis.qmd
                 text: "5. Data analysis"
     
+    - title: "Natural processes"
+      alignment: left
+      style: floating
+      collapse-level: 3
+      contents:
+        - section: "Natural processes"
+          contents:   
+          - href: Courses/Natural_processes/index.qmd
+            text: "Course information"
+          - section: "Tutorials"
+            contents:
+              - href: Courses/Natural_processes/Tutorials/NP1_Atmospheric_CO2_measurements.ipynb
+                text: "1. Atmospheric CO~2~ measurements"
+
     - title: "Statistics GSS"
       contents:
         - section: "Statistics GSS"
@@ -125,7 +142,7 @@ format:
     toc-depth: 5
     code-fold: true
     code-copy: true
-    code-summary: "Show me the R code"
+    code-summary: "Show me the code"
     code-tools: true
     code-overflow: scroll
     fig-cap-location: bottom

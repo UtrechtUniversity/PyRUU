@@ -309,14 +309,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-courses">    
         <li>
-    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
-</i> 
- <span class="dropdown-text">Statistics GSS</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-tree-fill" role="img">
 </i> 
  <span class="dropdown-text">Ecological field research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Natural_processes/index.html"><i class="bi bi-arrow-repeat" role="img">
+</i> 
+ <span class="dropdown-text">Natural processes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
+</i> 
+ <span class="dropdown-text">Statistics GSS</span></a>
   </li>  
     </ul>
   </li>
@@ -646,12 +651,12 @@ RStudio shortcut
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#View matrix</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]      [,3]      [,4]       [,5]
-[1,] 0.75948913 0.2633852 0.6943531 0.5364836 0.55992462
-[2,] 0.52030761 0.2684591 0.8939039 0.2943952 0.64382782
-[3,] 0.04349155 0.6216709 0.1364983 0.5071997 0.27819355
-[4,] 0.98730053 0.2866663 0.2933555 0.2644372 0.73290709
-[5,] 0.18443963 0.7376624 0.9817425 0.3416177 0.04818169</code></pre>
+<pre><code>            [,1]       [,2]       [,3]       [,4]      [,5]
+[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
+[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
+[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
+[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
+[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409</code></pre>
 </div>
 </div>
 <p>You can check the size of a matrix using the <code>dim()</code> function. The first element of the output is the number of rows. The second element of the output is the number of columns.</p>
@@ -710,12 +715,12 @@ RStudio shortcut
 [1] 1 2 3 4 5
 
 [[2]]
-           [,1]      [,2]      [,3]      [,4]       [,5]
-[1,] 0.75948913 0.2633852 0.6943531 0.5364836 0.55992462
-[2,] 0.52030761 0.2684591 0.8939039 0.2943952 0.64382782
-[3,] 0.04349155 0.6216709 0.1364983 0.5071997 0.27819355
-[4,] 0.98730053 0.2866663 0.2933555 0.2644372 0.73290709
-[5,] 0.18443963 0.7376624 0.9817425 0.3416177 0.04818169
+            [,1]       [,2]       [,3]       [,4]      [,5]
+[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
+[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
+[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
+[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
+[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409
 
 [[3]]
   Var1 Var2  Var3
@@ -761,7 +766,7 @@ RStudio shortcut
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8939039</code></pre>
+<pre><code>[1] 0.3347748</code></pre>
 </div>
 </div>
 <p>With a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol (<code>$</code>) followed by the column name.</p>
@@ -807,12 +812,12 @@ RStudio shortcut
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>x4[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]      [,3]      [,4]       [,5]
-[1,] 0.75948913 0.2633852 0.6943531 0.5364836 0.55992462
-[2,] 0.52030761 0.2684591 0.8939039 0.2943952 0.64382782
-[3,] 0.04349155 0.6216709 0.1364983 0.5071997 0.27819355
-[4,] 0.98730053 0.2866663 0.2933555 0.2644372 0.73290709
-[5,] 0.18443963 0.7376624 0.9817425 0.3416177 0.04818169</code></pre>
+<pre><code>            [,1]       [,2]       [,3]       [,4]      [,5]
+[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
+[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
+[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
+[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
+[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409</code></pre>
 </div>
 </div>
 

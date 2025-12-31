@@ -12,7 +12,7 @@ GEO2-2428
 
 ## Course description
 
-Sustainability research is complex and involves several questions linked to social and ecological dimensions. Many of those questions need to be answered based on quantitative data (=empirical evidence). Therefore, in this course we will focus on how to analyse quantitative data using statistical methods. The objective of the course is to understand and apply statistical analysis methods and techniques with a focus on sustainability research.
+Sustainability research is complex and involves several questions linked to social and ecological dimensions. Many of those questions need to be answered based on quantitative data. Therefore, in this course we will focus on how to analyse quantitative data using statistical methods. The objective of the course is to understand and apply statistical analysis methods and techniques with a focus on sustainability research.
 
 ## Course objectives
 

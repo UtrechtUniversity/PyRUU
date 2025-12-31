@@ -127,5 +127,11 @@
   },
   "Courses/Statistics_GSS/Demos/ttest-demo.qmd": {
     "ttest-demo.html": "641c4619"
+  },
+  "Courses/Natural_processes/index.qmd": {
+    "index.html": "4837468c"
+  },
+  "Courses/Natural_processes/Tutorials/NP1_Atmospheric_CO2_measurements.ipynb": {
+    "NP1_Atmospheric_CO2_measurements.html": "09729220"
   }
 }
