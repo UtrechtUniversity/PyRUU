@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Welcome!",
     "section": "",
-    "text": "PyRUU is a website created by lecturers at Utrecht University to teach data science in both R and Python to anyone wishing to learn these programming languages for exploring, visualising, and analysing real-world data.\nThis website also contains freely accessible content specific to courses for students at Utrecht University.\nThe development of this website is supported by the Faculty of Geosciences of Utrecht University."
+    "text": "Welcome!\n\n\n\n\n\n\nPyRUU is a website created by lecturers at Utrecht University to teach data science in both R and Python to anyone wishing to learn these programming languages for exploring, visualising, and analysing real-world data.\nThis website also contains freely accessible content specific to courses for students at Utrecht University.\nThe development of this website is supported by the Faculty of Geosciences of Utrecht University."
   },
   {
     "objectID": "Courses/Statistics_GSS/Tutorials/principal_component_analysis.html",
@@ -161,7 +161,7 @@
     "href": "Courses/Ecological_field_research/Tutorials/R_basics.html#creating-r-objects",
     "title": "R basics",
     "section": "Creating R objects",
-    "text": "Creating R objects\n\n\n\n\n\n\nThe assignment operator\n\n\n\nNew R objects are created using the assigment operator: &lt;-\nYou can think of this assignment operator as an arrow that puts what’s on its right side into an R object located on its left side.\nFor instance, let’s create an object called x that contains the value 2.\n\n#Create object\nx &lt;- 2\n\n#Show content of R object\nx\n\n[1] 2\n\n\n\n\n\n\n\n\nRStudio shortcut\n\n\n\nPress Alt and the minus sign on your keyboard (Alt+-) to quickly write the assignment operator.\n\n\n\n\n\nScalars\nA scalar is a quantity that can only hold one value at a time. Here are the most common types of scalars in R:\n\nNumeric: numbers with a decimal value (e.g., 17.8)\nInteger: numbers without a decimal value (e.g., 18)\nCharacter: a letter or a combination of letters. Character strings must be enclosed by quotes in your R code.\nFactor: data type used in statistical modelling to specify what are the factors in the model\nLogical: a logical variable can be either TRUE or FALSE\n\nYou can check the data type of an R object using the class() function.\n\nx &lt;- 2\nclass(x)\n\n[1] \"numeric\"\n\n\n\n\nVectors\nA vector is a sequence of data elements of the same type. Vectors can be created using the c() function.\n\n#Numeric vector\nx1 &lt;- c(1,2,3,4,5)\nx1 &lt;- c(1:5)\n\n#Character vector\nx &lt;- c(\"control\", \"treatment\")\n\n#Logical vector\nx &lt;- c(TRUE, TRUE, FALSE)\n\nYou can check how many elements there are in a vector using the length() function.\n\nlength(x1)\n\n[1] 5\n\n\n\n\nMatrices\nA matrix is an ensemble of data elements of the same type arranged in a 2D layout (i.e., like a table). Matrices can be created using the matrix() function.\n\n#Generate 25 random numbers between 0 and 1 from a uniform distribution\nx2 &lt;- runif(25)\n\n#Arrange these random numbers into a matrix with 5 rows and 5 columns\nx2 &lt;- matrix(x2,\n            ncol = 5,\n            nrow = 5)\n\n#View matrix\nx2\n\n            [,1]       [,2]       [,3]       [,4]      [,5]\n[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861\n[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351\n[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077\n[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976\n[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409\n\n\nYou can check the size of a matrix using the dim() function. The first element of the output is the number of rows. The second element of the output is the number of columns.\n\ndim(x2)\n\n[1] 5 5\n\n\nYou can also extract the number of rows and columns using nrow() and ncol(), respectively.\n\nnrow(x2)\n\n[1] 5\n\nncol(x2)\n\n[1] 5\n\n\n\n\nData frames\nA data frame is an ensemble of data elements arranged in a 2D layout (i.e., like a table). Different columns of a data frame can contain different types of data (character, logical, numeric, etc.). It is probably the most common data structure used when analysing ecological data. Data frames can be created using the data.frame() function.\n\n#Create data frame\nx3 &lt;- data.frame(Var1=c(1:6),\n                 Var2=c(\"R\", \"i\", \"s\", \"f\", \"u\", \"n\"),\n                 Var3=c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE))\n\n#View data frame\nx3\n\n  Var1 Var2  Var3\n1    1    R  TRUE\n2    2    i  TRUE\n3    3    s FALSE\n4    4    f FALSE\n5    5    u  TRUE\n6    6    n FALSE\n\n\nThe functions dim(), ncol(), and nrow() can also be used on data frames.\n\n\nLists\nA list is a vector containing other objects (vectors, matrices, data frames, other lists, etc.). It can contain elements of various data types. Lists can be created using the list() function.\n\n#Create a list\nx4 &lt;- list(x1, x2, x3)\n\n#View list\nx4\n\n[[1]]\n[1] 1 2 3 4 5\n\n[[2]]\n            [,1]       [,2]       [,3]       [,4]      [,5]\n[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861\n[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351\n[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077\n[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976\n[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409\n\n[[3]]\n  Var1 Var2  Var3\n1    1    R  TRUE\n2    2    i  TRUE\n3    3    s FALSE\n4    4    f FALSE\n5    5    u  TRUE\n6    6    n FALSE\n\n\nThe length() function can be used to check how many data elements there are in a list.\n\nlength(x4)\n\n[1] 3",
+    "text": "Creating R objects\n\n\n\n\n\n\nThe assignment operator\n\n\n\nNew R objects are created using the assigment operator: &lt;-\nYou can think of this assignment operator as an arrow that puts what’s on its right side into an R object located on its left side.\nFor instance, let’s create an object called x that contains the value 2.\n\n#Create object\nx &lt;- 2\n\n#Show content of R object\nx\n\n[1] 2\n\n\n\n\n\n\n\n\nRStudio shortcut\n\n\n\nPress Alt and the minus sign on your keyboard (Alt+-) to quickly write the assignment operator.\n\n\n\n\n\nScalars\nA scalar is a quantity that can only hold one value at a time. Here are the most common types of scalars in R:\n\nNumeric: numbers with a decimal value (e.g., 17.8)\nInteger: numbers without a decimal value (e.g., 18)\nCharacter: a letter or a combination of letters. Character strings must be enclosed by quotes in your R code.\nFactor: data type used in statistical modelling to specify what are the factors in the model\nLogical: a logical variable can be either TRUE or FALSE\n\nYou can check the data type of an R object using the class() function.\n\nx &lt;- 2\nclass(x)\n\n[1] \"numeric\"\n\n\n\n\nVectors\nA vector is a sequence of data elements of the same type. Vectors can be created using the c() function.\n\n#Numeric vector\nx1 &lt;- c(1,2,3,4,5)\nx1 &lt;- c(1:5)\n\n#Character vector\nx &lt;- c(\"control\", \"treatment\")\n\n#Logical vector\nx &lt;- c(TRUE, TRUE, FALSE)\n\nYou can check how many elements there are in a vector using the length() function.\n\nlength(x1)\n\n[1] 5\n\n\n\n\nMatrices\nA matrix is an ensemble of data elements of the same type arranged in a 2D layout (i.e., like a table). Matrices can be created using the matrix() function.\n\n#Generate 25 random numbers between 0 and 1 from a uniform distribution\nx2 &lt;- runif(25)\n\n#Arrange these random numbers into a matrix with 5 rows and 5 columns\nx2 &lt;- matrix(x2,\n            ncol = 5,\n            nrow = 5)\n\n#View matrix\nx2\n\n          [,1]      [,2]       [,3]       [,4]      [,5]\n[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602\n[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278\n[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768\n[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450\n[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393\n\n\nYou can check the size of a matrix using the dim() function. The first element of the output is the number of rows. The second element of the output is the number of columns.\n\ndim(x2)\n\n[1] 5 5\n\n\nYou can also extract the number of rows and columns using nrow() and ncol(), respectively.\n\nnrow(x2)\n\n[1] 5\n\nncol(x2)\n\n[1] 5\n\n\n\n\nData frames\nA data frame is an ensemble of data elements arranged in a 2D layout (i.e., like a table). Different columns of a data frame can contain different types of data (character, logical, numeric, etc.). It is probably the most common data structure used when analysing ecological data. Data frames can be created using the data.frame() function.\n\n#Create data frame\nx3 &lt;- data.frame(Var1=c(1:6),\n                 Var2=c(\"R\", \"i\", \"s\", \"f\", \"u\", \"n\"),\n                 Var3=c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE))\n\n#View data frame\nx3\n\n  Var1 Var2  Var3\n1    1    R  TRUE\n2    2    i  TRUE\n3    3    s FALSE\n4    4    f FALSE\n5    5    u  TRUE\n6    6    n FALSE\n\n\nThe functions dim(), ncol(), and nrow() can also be used on data frames.\n\n\nLists\nA list is a vector containing other objects (vectors, matrices, data frames, other lists, etc.). It can contain elements of various data types. Lists can be created using the list() function.\n\n#Create a list\nx4 &lt;- list(x1, x2, x3)\n\n#View list\nx4\n\n[[1]]\n[1] 1 2 3 4 5\n\n[[2]]\n          [,1]      [,2]       [,3]       [,4]      [,5]\n[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602\n[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278\n[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768\n[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450\n[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393\n\n[[3]]\n  Var1 Var2  Var3\n1    1    R  TRUE\n2    2    i  TRUE\n3    3    s FALSE\n4    4    f FALSE\n5    5    u  TRUE\n6    6    n FALSE\n\n\nThe length() function can be used to check how many data elements there are in a list.\n\nlength(x4)\n\n[1] 3",
     "crumbs": [
       "Ecological field research",
       "Before starting",
@@ -173,7 +173,7 @@
     "href": "Courses/Ecological_field_research/Tutorials/R_basics.html#indexing",
     "title": "R basics",
     "section": "Indexing",
-    "text": "Indexing\nOne of the main advantages of R is that it is very easy to extract any given value from a data set. This is called indexing. Let’s have a look at a few examples.\n\nVectors\nTo extract the ith value of a vector object called x, you should write x[i].\n\n#Extract the third value of the x1 object \n#x1 is a vector\n\nx1[3]\n\n[1] 3\n\n\n\n\nMatrices and data frames\nTo extract the value located at the intersection between the ith row and jth column of a matrix or a data frame object called x, you should write x[i,j].\n\n#Extract the value at the intersection of row 2 and column 3 in the x2 object\n#x2 is a matrix\n\nx2[2,3]\n\n[1] 0.3347748\n\n\nWith a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol ($) followed by the column name.\n\n#Extract all the values stored in the second column of the x3 object\n#x3 is a data frame\n\nx3$Var2\n\n[1] \"R\" \"i\" \"s\" \"f\" \"u\" \"n\"\n\n\nNote that the following code would also work and would produce the same result. To extract all the values from a specific column, simply leave the square brackets empty before the comma. It is important to specify the name of the column (in quotes), otherwise you will simply extract all the values from your data frame.\n\n#Extract all the values stored in the second column of the x3 object\n#x3 is a data frame\n\nx3[,\"Var2\"]\n\n[1] \"R\" \"i\" \"s\" \"f\" \"u\" \"n\"\n\n\nIf you want to subset a matrix or a data frame called x (i.e., selecting only specifics rows and columns), you should write:\nx[rows to select, columns to select]\n\n#Extract only the values located between rows 2 and 4 \n#in the second column of the x3 object\n#x3 is a data frame\n\nx3[2:4, 2]\n\n[1] \"i\" \"s\" \"f\"\n\n\nNote that writing 2:4 means “from index 2 to index 4”. It is exactly the same as writing c(2,3,4).\n\n\nLists\nTo extract the ith element of a list object called x, you should write x[[i]].\n\n#Extract the second element of the x4 object\n#x4 is a list\n\nx4[[2]]\n\n            [,1]       [,2]       [,3]       [,4]      [,5]\n[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861\n[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351\n[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077\n[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976\n[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409",
+    "text": "Indexing\nOne of the main advantages of R is that it is very easy to extract any given value from a data set. This is called indexing. Let’s have a look at a few examples.\n\nVectors\nTo extract the ith value of a vector object called x, you should write x[i].\n\n#Extract the third value of the x1 object \n#x1 is a vector\n\nx1[3]\n\n[1] 3\n\n\n\n\nMatrices and data frames\nTo extract the value located at the intersection between the ith row and jth column of a matrix or a data frame object called x, you should write x[i,j].\n\n#Extract the value at the intersection of row 2 and column 3 in the x2 object\n#x2 is a matrix\n\nx2[2,3]\n\n[1] 0.9197542\n\n\nWith a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol ($) followed by the column name.\n\n#Extract all the values stored in the second column of the x3 object\n#x3 is a data frame\n\nx3$Var2\n\n[1] \"R\" \"i\" \"s\" \"f\" \"u\" \"n\"\n\n\nNote that the following code would also work and would produce the same result. To extract all the values from a specific column, simply leave the square brackets empty before the comma. It is important to specify the name of the column (in quotes), otherwise you will simply extract all the values from your data frame.\n\n#Extract all the values stored in the second column of the x3 object\n#x3 is a data frame\n\nx3[,\"Var2\"]\n\n[1] \"R\" \"i\" \"s\" \"f\" \"u\" \"n\"\n\n\nIf you want to subset a matrix or a data frame called x (i.e., selecting only specifics rows and columns), you should write:\nx[rows to select, columns to select]\n\n#Extract only the values located between rows 2 and 4 \n#in the second column of the x3 object\n#x3 is a data frame\n\nx3[2:4, 2]\n\n[1] \"i\" \"s\" \"f\"\n\n\nNote that writing 2:4 means “from index 2 to index 4”. It is exactly the same as writing c(2,3,4).\n\n\nLists\nTo extract the ith element of a list object called x, you should write x[[i]].\n\n#Extract the second element of the x4 object\n#x4 is a list\n\nx4[[2]]\n\n          [,1]      [,2]       [,3]       [,4]      [,5]\n[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602\n[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278\n[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768\n[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450\n[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393",
     "crumbs": [
       "Ecological field research",
       "Before starting",
@@ -487,21 +487,19 @@
     "href": "Courses/Ecological_field_research/index.html",
     "title": "Ecological field research",
     "section": "",
-    "text": "GEO2-2439",
+    "text": "Global sustainability science Year 2 R programming",
     "crumbs": [
-      "Ecological field research",
-      "Course information"
+      "Ecological field research"
     ]
   },
   {
     "objectID": "Courses/Ecological_field_research/index.html#course-code",
     "href": "Courses/Ecological_field_research/index.html#course-code",
     "title": "Ecological field research",
-    "section": "",
-    "text": "GEO2-2439",
+    "section": "Course code",
+    "text": "Course code\nGEO2-2439",
     "crumbs": [
-      "Ecological field research",
-      "Course information"
+      "Ecological field research"
     ]
   },
   {
@@ -509,10 +507,9 @@
     "href": "Courses/Ecological_field_research/index.html#course-coordinator",
     "title": "Ecological field research",
     "section": "Course coordinator",
-    "text": "Course coordinator\nBenjamin Delory",
+    "text": "Course coordinator\nDr Benjamin Delory",
     "crumbs": [
-      "Ecological field research",
-      "Course information"
+      "Ecological field research"
     ]
   },
   {
@@ -522,8 +519,7 @@
     "section": "Course description",
     "text": "Course description\nConducting research is not something you can improvise. It requires thorough planning and execution, especially in ecology where research questions are often complex and field conditions can be challenging (bad or extreme weather, tough terrain, remote areas, etc.). Before heading out into the wild, we need to make important decisions about how we are going to gather ecological data and analyse it to answer our research questions and test our hypotheses. This means figuring out the sampling design we will use and choosing the right techniques and tools for collecting samples and meaningful ecological data about natural processes and biodiversity. But it is not a simple task. Researchers have to consider a number of factors that could impact the success of their research project — like variations in the landscape, potential biases and errors from observers, equipment costs and availability, and the pros and cons of different sampling methods. Even after data collection, researchers need to manage, visualise, explore and analyse their data properly before they can communicate their findings to their peers, to policymakers, and to society at large. All these steps require special attention, as they can affect the reliability of research results and their potential impact on developing solutions towards a more sustainable future.\nThe main objective of this course is to acquire the skills needed to plan ecological fieldwork and collect high-quality data in the field and in the laboratory on biotic and abiotic variables using appropriate sampling techniques. This course will also give you the knowledge and tools to manage, visualise, explore, and analyse complex ecological datasets using best scientific practices, as well as to correctly interpret results taking into account the advantages and disadvantages of the research design (e.g., sampling limitations, observer bias, etc.).",
     "crumbs": [
-      "Ecological field research",
-      "Course information"
+      "Ecological field research"
     ]
   },
   {
@@ -533,8 +529,7 @@
     "section": "Course objectives",
     "text": "Course objectives\n\nExplain and discuss common methods used in the field to collect ecological and environmental data that can be used to answer research questions\nChoose appropriate scientific methods to collect high-quality measurements and successfully apply these methods in the field\nApply data management principles to document, structure, manage, and share data collected in the field in accordance with the highest scientific standards\nExplore, visualise and analyse ecological and environmental data in a scientifically sound manner\nWrite a research paper in which research results are presented, interpreted, and discussed in a concise, clear, and accurate way\nOrally present and compare results obtained by different students and identify possible sources of variation",
     "crumbs": [
-      "Ecological field research",
-      "Course information"
+      "Ecological field research"
     ]
   },
   {
@@ -872,21 +867,19 @@
     "href": "Courses/Natural_processes/index.html",
     "title": "Natural processes",
     "section": "",
-    "text": "GEO1-2412",
+    "text": "Global sustainability science Year 1 Python programming",
     "crumbs": [
-      "Natural processes",
-      "Course information"
+      "Natural processes"
     ]
   },
   {
     "objectID": "Courses/Natural_processes/index.html#course-code",
     "href": "Courses/Natural_processes/index.html#course-code",
     "title": "Natural processes",
-    "section": "",
-    "text": "GEO1-2412",
+    "section": "Course code",
+    "text": "Course code\nGEO1-2412",
     "crumbs": [
-      "Natural processes",
-      "Course information"
+      "Natural processes"
     ]
   },
   {
@@ -894,10 +887,9 @@
     "href": "Courses/Natural_processes/index.html#course-coordinator",
     "title": "Natural processes",
     "section": "Course coordinator",
-    "text": "Course coordinator\nGerbrand Koren",
+    "text": "Course coordinator\nDr Gerbrand Koren",
     "crumbs": [
-      "Natural processes",
-      "Course information"
+      "Natural processes"
     ]
   },
   {
@@ -907,8 +899,7 @@
     "section": "Course description",
     "text": "Course description\nThe aim of this course is to provide students with a solid natural science base for studying global change. As such, it provides the fundamental understanding of natural processes that are needed as a basis for follow-up courses dealing in depth with specific global change effects, such as Global Climate Change.\nWe will focus on the Earths’ energy balance, the hydrological cycle and the elemental cycles of carbon, nitrogen and phosphorus, because they are essential for life on Earth and are linked to the major global change effects that our society is dealing with today. We will look at the major stocks of energy, water and elements in different environmental compartments (atmosphere, hydrosphere, lithosphere and biosphere), as well as the processes that govern the exchange between those compartments and the storage capacity of the compartments.",
     "crumbs": [
-      "Natural processes",
-      "Course information"
+      "Natural processes"
     ]
   },
   {
@@ -918,8 +909,7 @@
     "section": "Course objectives",
     "text": "Course objectives",
     "crumbs": [
-      "Natural processes",
-      "Course information"
+      "Natural processes"
     ]
   },
   {
@@ -927,21 +917,19 @@
     "href": "Courses/Statistics_GSS/index.html",
     "title": "Statistics GSS",
     "section": "",
-    "text": "GEO2-2428",
+    "text": "Global sustainability science Year 2 R programming",
     "crumbs": [
-      "Statistics GSS",
-      "Course information"
+      "Statistics GSS"
     ]
   },
   {
     "objectID": "Courses/Statistics_GSS/index.html#course-code",
     "href": "Courses/Statistics_GSS/index.html#course-code",
     "title": "Statistics GSS",
-    "section": "",
-    "text": "GEO2-2428",
+    "section": "Course code",
+    "text": "Course code\nGEO2-2428",
     "crumbs": [
-      "Statistics GSS",
-      "Course information"
+      "Statistics GSS"
     ]
   },
   {
@@ -949,10 +937,9 @@
     "href": "Courses/Statistics_GSS/index.html#course-coordinator",
     "title": "Statistics GSS",
     "section": "Course coordinator",
-    "text": "Course coordinator\nBenjamin Delory",
+    "text": "Course coordinator\nDr Benjamin Delory",
     "crumbs": [
-      "Statistics GSS",
-      "Course information"
+      "Statistics GSS"
     ]
   },
   {
@@ -962,8 +949,7 @@
     "section": "Course description",
     "text": "Course description\nSustainability research is complex and involves several questions linked to social and ecological dimensions. Many of those questions need to be answered based on quantitative data. Therefore, in this course we will focus on how to analyse quantitative data using statistical methods. The objective of the course is to understand and apply statistical analysis methods and techniques with a focus on sustainability research.",
     "crumbs": [
-      "Statistics GSS",
-      "Course information"
+      "Statistics GSS"
     ]
   },
   {
@@ -973,8 +959,7 @@
     "section": "Course objectives",
     "text": "Course objectives\n\nUnderstand the theoretical and mathematical basis of statistical methods\nDetermine the appropriate statistical analysis method for a research question\nConduct the statistical analysis in R\nInterpret the findings of the statistical analysis\nReport the results of statistical analyses in a clear and accurate way",
     "crumbs": [
-      "Statistics GSS",
-      "Course information"
+      "Statistics GSS"
     ]
   },
   {

@@ -1,6 +1,9 @@
 ---
 title: Natural processes
+code-tools: false
 ---
+
+{{< badge programme "Global sustainability science" >}} {{< badge year "Year 1" >}} {{< badge pycoding "Python programming" >}}
 
 ## Course code
 
@@ -8,7 +11,7 @@ GEO1-2412
 
 ## Course coordinator
 
-[Gerbrand Koren](https://www.uu.nl/medewerkers/GBKoren)
+[Dr Gerbrand Koren](https://www.uu.nl/medewerkers/GBKoren)
 
 ## Course description
 

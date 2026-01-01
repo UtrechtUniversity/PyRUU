@@ -27,13 +27,13 @@ website:
         menu: 
           - text: "Ecological field research"
             href: Courses/Ecological_field_research/index.qmd
-            icon: tree-fill
+            icon: journal-text
           - text: "Natural processes"
             href: Courses/Natural_processes/index.qmd
             icon: arrow-repeat
           - text: "Statistics GSS"
             href: Courses/Statistics_GSS/index.qmd
-            icon: bar-chart-line-fill
+            icon: bar-chart-line
       - href: contact.qmd
         text: "Contact"
         icon: envelope-at-fill
@@ -51,6 +51,7 @@ website:
       collapse-level: 3
       contents:
         - section: "Ecological field research"
+          href: Courses/Ecological_field_research/index.qmd
           contents:   
           - href: Courses/Ecological_field_research/index.qmd
             text: "Course information"
@@ -82,6 +83,7 @@ website:
       collapse-level: 3
       contents:
         - section: "Natural processes"
+          href: Courses/Natural_processes/index.qmd
           contents:   
           - href: Courses/Natural_processes/index.qmd
             text: "Course information"
@@ -93,6 +95,7 @@ website:
     - title: "Statistics GSS"
       contents:
         - section: "Statistics GSS"
+          href: Courses/Statistics_GSS/index.qmd
           contents:   
           - href: Courses/Statistics_GSS/index.qmd
             text: "Course information"
@@ -151,3 +154,17 @@ format:
 editor: visual
 editor_options: 
   chunk_output_type: console
+
+extensions:
+  badge:
+    - key: programme
+      colour: rgb(255, 205, 0)
+      href: https://www.uu.nl/bachelors/global-sustainability-science
+    - key: year
+      colour: rgb(36, 167, 147)
+    - key: rcoding
+      colour: rgb(39, 109, 195)
+      href: https://www.r-project.org/
+    - key: pycoding
+      colour: rgb(55, 118, 171)
+      href: https://www.python.org/

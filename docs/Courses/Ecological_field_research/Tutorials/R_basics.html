@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-courses">    
         <li>
-    <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-tree-fill" role="img">
+    <a class="dropdown-item" href="../../../Courses/Ecological_field_research/index.html"><i class="bi bi-journal-text" role="img">
 </i> 
  <span class="dropdown-text">Ecological field research</span></a>
   </li>  
@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Natural processes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line-fill" role="img">
+    <a class="dropdown-item" href="../../../Courses/Statistics_GSS/index.html"><i class="bi bi-bar-chart-line" role="img">
 </i> 
  <span class="dropdown-text">Statistics GSS</span></a>
   </li>  
@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a href="../../../Courses/Ecological_field_research/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ecological field research</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -651,12 +651,12 @@ RStudio shortcut
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#View matrix</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            [,1]       [,2]       [,3]       [,4]      [,5]
-[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
-[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
-[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
-[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
-[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409</code></pre>
+<pre><code>          [,1]      [,2]       [,3]       [,4]      [,5]
+[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602
+[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278
+[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768
+[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450
+[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393</code></pre>
 </div>
 </div>
 <p>You can check the size of a matrix using the <code>dim()</code> function. The first element of the output is the number of rows. The second element of the output is the number of columns.</p>
@@ -715,12 +715,12 @@ RStudio shortcut
 [1] 1 2 3 4 5
 
 [[2]]
-            [,1]       [,2]       [,3]       [,4]      [,5]
-[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
-[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
-[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
-[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
-[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409
+          [,1]      [,2]       [,3]       [,4]      [,5]
+[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602
+[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278
+[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768
+[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450
+[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393
 
 [[3]]
   Var1 Var2  Var3
@@ -766,7 +766,7 @@ RStudio shortcut
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3347748</code></pre>
+<pre><code>[1] 0.9197542</code></pre>
 </div>
 </div>
 <p>With a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol (<code>$</code>) followed by the column name.</p>
@@ -812,12 +812,12 @@ RStudio shortcut
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>x4[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            [,1]       [,2]       [,3]       [,4]      [,5]
-[1,] 0.253983892 0.04066535 0.08498603 0.28366065 0.3338861
-[2,] 0.098234665 0.14862741 0.33477482 0.55485442 0.8955351
-[3,] 0.001719825 0.87192547 0.55520134 0.49348707 0.9680077
-[4,] 0.818412893 0.14079073 0.44954042 0.06775923 0.8760976
-[5,] 0.472083722 0.77818253 0.60020608 0.99010303 0.7747409</code></pre>
+<pre><code>          [,1]      [,2]       [,3]       [,4]      [,5]
+[1,] 0.1197970 0.3573761 0.08701737 0.25984928 0.9815602
+[2,] 0.9586194 0.5505397 0.91975422 0.02789848 0.3995278
+[3,] 0.1096499 0.6514140 0.15827995 0.11339169 0.2821768
+[4,] 0.2243786 0.6749798 0.38233438 0.32275175 0.8439450
+[5,] 0.7009467 0.9205823 0.28381055 0.51994803 0.8955393</code></pre>
 </div>
 </div>
 

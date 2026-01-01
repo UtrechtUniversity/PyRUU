@@ -1,6 +1,11 @@
 ---
 title: Statistics GSS
+code-tools: false
 ---
+
+{{< badge programme "Global sustainability science" >}}
+{{< badge year "Year 2" >}}
+{{< badge rcoding "R programming" >}}
 
 ## Course code
 
@@ -8,7 +13,7 @@ GEO2-2428
 
 ## Course coordinator
 
-[Benjamin Delory](https://www.uu.nl/staff/BMMDelory)
+[Dr Benjamin Delory](https://www.uu.nl/staff/BMMDelory)
 
 ## Course description
 

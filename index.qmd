@@ -1,8 +1,11 @@
 ---
-title: Welcome!
+code-tools: false
+toc: false
 ---
 
-![](Images/logo_website.png){fig-alt="AI-generated image" fig-align="center" width="301"}
+# Welcome! {.text-center}
+
+![](Images/logo_website.png){fig-alt="Website logo" fig-align="center" width="302"}
 
 ::: text-center
 PyRUU is a website created by lecturers at Utrecht University to teach data science in both R and Python to anyone wishing to learn these programming languages for exploring, visualising, and analysing real-world data.
