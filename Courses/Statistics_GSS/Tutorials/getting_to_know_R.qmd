@@ -1,21 +1,11 @@
 ---
-title: "Tutorial 1: Getting to know R"
+title: "Tutorial 1: Getting to know R and RStudio"
 author:
   - name: Benjamin Delory
     orcid: 0000-0002-1190-8060
     email: b.m.m.delory@uu.nl
     affiliations:
       - name: Copernicus institute of sustainable development, Utrecht University
-  - name: Natalie Davis
-    orcid: 0000-0002-2678-0389
-    email: n.a.davis@vu.nl
-    affiliations:
-      - name: Amsterdam sustainability institute, Vrije Universiteit Amsterdam
-  - name: Heitor Mancini Teixeira
-    orcid: 0000-0001-6992-0671
-    email: heitor.teixeira@ufv.br
-    affiliations:
-      - name: Departamento de Solos Centro de Ciências Agrárias, Universidade Federal de Vicosa, Brazil
 format: html
 editor: visual
 editor_options: 
@@ -23,4 +13,495 @@ editor_options:
 image: /Images/Rlogo.png
 ---
 
-Add text
+## About this tutorial
+
+Welcome to this tutorial on getting to know R (and RStudio)!
+
+In this tutorial, **our goal is to provide you with an introduction to R and RStudio.** By the end of this tutorial, you should be able to open RStudio and understand its interface, write simple R scripts, execute code in the RStudio R console, create R objects, extract values from R objects, perform basic calculations, and create a simple graph using base R.
+
+This tutorial will help you master some fundamental skills that you will use repeatedly throughout this course!
+
+## What are R and RStudio?
+
+### What is R?
+
+**R** is a [programming language]{.underline} used for data exploration, visualization, and analysis. It is a very popular data science language in academia, but also in industry. It is free and open-source. Be aware that R is not the only programming language for data science. You may also have heard of Python, SQL, Java, Julia, C/C++, etc. In this course, however, we will only focus on R.
+
+### What is RStudio?
+
+**RStudio** is an [integrated development environment]{.underline} (IDE) for R (and other languages such as Python) developed by [Posit](#0), an open-source data science company. With RStudio, you can easily write your own scripts, run R code, manage your workspace, install and load R packages, view graphical output, and much more! You can download RStudio on the [Posit website](#0).
+
+::: callout-note
+## When you work in RStudio, you are still using R!
+
+RStudio is an integrated development environment that makes working with R easier and more user-friendly. All the code you write and run in RStudio is R code, executed by the R engine in the background.
+:::
+
+## The RStudio interface
+
+When you open RStudio, you should see **four main panels** (@fig-rstudio-layout):
+
+1.  **Script** (top-left): this is where you write and edit R code. If you do not see the script panel, click File → New File → R Script (`.R` file).
+2.  **Console** (bottom-left): this is where R code is executed.
+3.  **Environment and History** (top-right): this is where you can see all the R objects that have been created (Environment tab), as well as all the R code that has already been executed (History tab).
+4.  **Output** (bottom-right): this is where you can explore and manage files (Files tab), view plots (Plots tab), install, update, and (un)load R packages (Package tab), and access package documentation and vignettes (Help tab).
+
+![The RStudio interface consists of four main panels.](/Images/rstudio-layout.png){#fig-rstudio-layout fig-align="center" width="900"}
+
+### The RStudio menu
+
+The main RStudio menu provides access to the most important functions for working with R projects and scripts. The **File** menu is used to create, open, and save scripts, projects, and data files, while **Edit** contains tools for editing code. The **Code** menu helps you write, format, and execute R code, and the **Plots**, **Session**, and **Help** menus allow you to manage outputs, control your R session, and access documentation and help resources. In @fig-rstudio-menu, you can see a description of some of the most commonly used icons.
+
+![The RStudio menu](/Images/rstudio-menu.png){#fig-rstudio-menu fig-align="center" width="700"}
+
+### The source pane
+
+The source pane is where you view and edit files that contain R code (@fig-rstudio-source). In this course, you will mainly work with two types of files: plain text files (with a `.txt` extension) and R script files (with a `.R` extension). You will also encounter Quarto files (with a `.qmd` extension), which are a powerful way to create well-documented and reproducible data analysis workflows. [Quarto](https://quarto.org/) is a publishing system that allows you to combine code, text, and figures in a single document and render them into outputs such as HTML, PDF, or Word files. In fact, this entire website was created using Quarto.
+
+![The source pane in RStudio](/Images/rstudio-source.png){#fig-rstudio-source fig-align="center" width="700"}
+
+### The console pane
+
+The console pane is where you run R code (@fig-rstudio-console). To do this, you can send the code written in the source pane to the console pane using the “Run” command to execute the current line or selected code, or use the shortcut `Ctrl + Enter` (Windows) or `Cmd + Enter` (macOS).
+
+![The console pane in RStudio](/Images/rstudio-console.png){#fig-rstudio-console fig-align="center" width="700"}
+
+### The environment pane
+
+The environment pane consists of several tabs (@fig-rstudio-environment). We will only focus on the two first tabs for now: Environment and History.
+
+The **Environment** tab shows the R objects that currently exist in your session, such as data frames, vectors, and functions, and provides basic information about them (for example, their size or type). From this tab, you can also easily import datasets into R using **Import Dataset**, as well as load or save an entire workspace.
+
+The **History** tab displays a record of the commands that have been executed in the console. You can select any of these commands and send them back to your script in the source pane or to the console to run them again, using the **To Source** and **To Console** buttons, respectively.
+
+![The environment pane in RStudio](/Images/rstudio-environment.png){#fig-rstudio-environment fig-align="center" width="700"}
+
+### The output pane
+
+The output pane also consists of several tabs, of which Files, Plots, Packages, and Help are used very often (@fig-rstudio-output).
+
+The **Files** tab allows you to browse, open, rename, and manage files and folders.
+
+The **Plots** tab displays any figures generated by your R code and provides tools to navigate between plots or export them.
+
+The **Packages** tab shows which R packages are installed and which are currently loaded, and lets you load or unload packages with a click.
+
+The **Help** tab displays documentation for R functions and packages, including usage, arguments, and examples, and is especially useful when learning new functions.
+
+![The output pane in RStudio](/Images/rstudio-output.png){#fig-rstudio-output fig-align="center" width="700"}
+
+## Commenting
+
+You can add comments to your R script using the hash tag symbol: `#`
+
+Every line that starts with `#` will be ignored by R and will not be executed.
+
+```{r}
+#| eval: true
+#| echo: true
+#| code-fold: false
+
+#This line of code is a comment and will be ignored by R when running the code
+```
+
+::: callout-important
+## Always comment your R script!
+
+We strongly advise you to add comments to your R code. At the very least, these comments should indicate ***why*** you have written each section of your code. It can also be useful to add information about the ***what*** and ***how***. These comments can save a lot of time if you need to go back over your code after a while or, even more difficult, if someone else needs to go through your code and understand what you've done.
+:::
+
+## Creating R objects
+
+New R objects are created using the assigment operator: `<-`
+
+Press `Alt + minus` (Windows) or `Option + minus` (macOS) to quickly write the assignment operator.
+
+You can think of this assignment operator as an arrow that puts what's on its right side into an R object located on its left side.
+
+::: callout-note
+## Two important things to keep in mind when naming R objects
+
+1.  R is case-sensitive! If R returns an error, check for typos!
+2.  Do not use spaces in object names.
+:::
+
+::: callout-tip
+## Exercise 1
+
+Create an object called `x` that contains the value 2. Then, multiply it by 10.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Create object
+x <- 2
+
+#Show content of R object
+x
+
+#Multiply x by 10
+x*10
+```
+
+### Scalars
+
+A scalar is a quantity that can only hold one value at a time. Here are the most common types of scalars in R:
+
+-   *Numeric*: numbers with a decimal value (e.g., 17.8)
+-   *Integer*: numbers without a decimal value (e.g., 18)
+-   *Character*: a letter or a combination of letters. Character strings must be enclosed by quotes in your R code.
+-   *Factor*: data type used in statistical modelling to specify what are the factors in the model
+-   *Logical*: a logical variable can be either `TRUE` or `FALSE`
+
+You can check the data type of an R object using the `class()` function.
+
+::: callout-tip
+## Exercise 2
+
+Check the data type of the R object (`x`) you created in Exercise 1.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+class(x)
+```
+
+### Vectors
+
+A vector is a sequence of data elements of the same type. Vectors can be created using the `c()` function. The letter "c" stands for "concatenate". When using this function, each element of your vector must be separated by a comma. More generally, this is a standard rule in R: **arguments passed to a function are always separated by commas**. The general syntax of an R function call is:
+
+`function(argument1 = value1, argument2 = value2, argument3 = value3)`
+
+::: callout-note
+## When should I (not) use quotation marks when writing R code?
+
+In R, **text must be placed between quotation marks when it is meant to be treated as a character string**, such as labels, titles, file names, or values of character variables (for example `"control"` or `"treatment"`). Quotation marks tell R to interpret the text literally rather than as the name of an object.
+
+By contrast, **you should not use quotation marks when referring to existing objects, functions, or variables in your workspace**, such as `plot`, `data`, or `x`, because R will then look for those objects and use their values.
+:::
+
+::: callout-tip
+## Exercise 3
+
+1.  Create a numeric vector called `x1` that contains all integer values from 1 to 5.
+2.  Create a character vector called `x2` containing the strings "control" and "treatment".
+3.  Check how many elements are in `x1` and `x2`. You can check how many elements there are in a vector using the `length()` function.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Numeric vector (x1)
+x1 <- c(1, 2, 3, 4, 5)
+
+#Note: this is another option to create x1
+x1 <- c(1:5)
+
+#Character vector (x2)
+x2 <- c("control", "treatment")
+
+#Check the number of elements in x1 and x2
+length(x1)
+length(x2)
+```
+
+### Matrices
+
+A matrix is an ensemble of data elements of the same type arranged in a 2D layout (i.e., like a table). Matrices can be created using the `matrix()` function.
+
+You can check the size of a matrix using the `dim()` function. The first element of the output is the number of rows. The second element of the output is the number of columns. You can also extract the number of rows and columns using `nrow()` and `ncol()`, respectively.
+
+::: callout-tip
+## Exercise 4
+
+1.  Create a matrix called `x3` that contains all integer values from 1 to 30 arranged in a 5 by 6 layout (5 rows and 6 columns). See the help page for the `matrix()` function in the help pane to find out which arguments must be provided to perform this operation. You can easily do this by running `?matrix` in your R console.
+2.  Check the size of `x3` using `dim()`, `ncol()`, and `nrow()`.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Create matrix
+x3 <- matrix(1:30,
+             ncol = 6,
+             nrow = 5)
+
+#View matrix
+x3
+
+#Check the size of x3
+dim(x3)
+ncol(x3)
+nrow(x3)
+```
+
+### Data frames
+
+A data frame is an ensemble of data elements arranged in a 2D layout (i.e., like a table). Different columns of a data frame can contain different types of data (character, logical, numeric, etc.). It is probably the most common data structure used when analysing ecological data. Data frames can be created using the `data.frame()` function. The functions `dim()`, `ncol()`, and `nrow()` can also be used on data frames.
+
+::: callout-tip
+## Exercise 5
+
+Create a data frame with three variables:
+
+-   Var1 (all integer values from 1 to 10)
+
+-   Var2 (values in Var1 multiplied by 2)
+
+-   Var3 (5 times "control" and 5 times "treatment")
+
+Check the help page of the `data.frame()` function to figure out how to use it (`?data.frame`).
+
+Note: when you have to repeat an element multiple times in a vector, you can use the function `rep()` to shorten your code. See example in the solution below.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+
+#Create data frame
+x4 <- data.frame(
+  Var1 = c(1:10),
+  Var2 = 2*c(1:10),
+  Var3 = c("control","control","control","control","control",
+           "treatment","treatment","treatment","treatment","treatment"))
+
+#This does exactly the same, but is shorter to write
+x4 <- data.frame(
+  Var1 = c(1:10),
+  Var2 = 2*c(1:10),
+  Var3 = c(rep("control", 5),
+           rep("treatment", 5)))
+
+#View data frame
+x4
+```
+
+### Lists
+
+A list is a vector containing other objects (vectors, matrices, data frames, other lists, etc.). It can contain elements of various data types. Lists can be created using the `list()` function. The `length()` function can be used to check how many data elements there are in a list.
+
+::: callout-tip
+## Exercise 6
+
+1.  Create a list (`x5`) containing the objects `x1`, `x2`, `x3` and `x4` created earlier.
+2.  Check how many elements are in this list using `length()`.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Create list
+x5 <- list(x1, x2, x3, x4)
+
+#View list
+x5
+
+#Check the number of elements in the list
+length(x5)
+```
+
+## Indexing
+
+One of the main advantages of R is that it is very easy to extract any given value from a data set. This is called indexing. Let's have a look at a few examples.
+
+### Vectors
+
+To extract the *i^th^* value of a vector object called `x`, you should write `x[i]`.
+
+::: callout-tip
+## Exercise 7
+
+Extract the third value of the `x1` object (numeric vector) created in Exercise 3.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Extract the third value of the x1 object
+#x1 is a vector
+
+x1[3]
+```
+
+### Matrices and data frames
+
+To extract the value located at the intersection between the *i^th^* row and *j^th^* column of a matrix or a data frame object called `x`, you should write `x[i,j]`.
+
+::: callout-tip
+## Exercise 8
+
+Extract the value at the intersection of row 2 and column 3 in the `x3` object (matrix) created in Exercise 4.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Extract the value at the intersection of row 2 and column 3 in the x3 object
+#x3 is a matrix
+
+x3[2, 3]
+```
+
+With a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol (`$`) followed by the column name. Another option to extract all the values from a specific column is to use square brakets (`[]`) after the object name (as in Exercise 8) and simply leave the square brackets empty before the comma. It is important to specify the name of the column (in quotes), otherwise you will simply extract all the values from your data frame.
+
+::: callout-tip
+## Exercise 9
+
+Extract all the values stored in the second column (Var2) of the `x4` object (data frame) created in Exercise 5. Use both options explained above.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Extract all the values stored in the second column of the x4 object
+#x4 is a data frame
+
+#Option 1
+x4$Var2
+
+#Option 2
+x4[, "Var2"]
+```
+
+If you want to subset a matrix or a data frame called `x` (i.e., selecting only specifics rows and columns), you should write:
+
+`x[rows to select, columns to select]`
+
+::: callout-tip
+## Exercise 10
+
+Extract only the values located between rows 2 and 4 in the second column of the `x4` object (data frame) created in Exercise 5. Note that writing `2:4` means "from index 2 to index 4". It is exactly the same as writing `c(2,3,4)`.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Extract only the values located between rows 2 and 4
+#in the second column of the x4 object
+#x4 is a data frame
+
+x4[2:4, 2]
+```
+
+### Lists
+
+To extract the *i^th^* element of a list object called `x`, you should write `x[[i]]`.
+
+::: callout-tip
+## Exercise 11
+
+Extract the second element of the `x5` object (list) created in Exercise 6.
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+
+#Extract the second element of the x5 object
+#x5 is a list
+
+x5[[2]]
+```
+
+## Create your first R plot
+
+In base R, you can create your first plot using built-in functions that are available as soon as R starts, without installing any additional packages.
+
+The most commonly used function is `plot()`, which can produce scatter plots. You can then improve your plot by choosing the type of plot (`type` argument) or adding axis labels (`xlab` and `ylab` arguments), a title (`main` argument), and colors (`col` argument). You can also add new elements to your plots with functions like `points()`, `lines()`, and `abline()`.
+
+These base R plotting functions are a simple and effective way to explore data and understand the relationship between variables before moving on to more advanced graphics systems such as the *ggplot2* R package (which will be used later in this course).
+
+Before moving on to an exercise, take a moment to consult the help page for the `plot()` function and read through the descriptions of the arguments you can use to create and customize your plot. At this stage, it is also useful to explore the graphical parameters that control the appearance of plots more generally. You can view these by running `?par` in your R console.
+
+Some arguments controlling graphical parameters are used very often, such as `pch` to choose the symbol used to represent points in a plot, `cex` to control the size of plotting elements, `lty` to specify the line type (solid, dashed, dotted, etc.), or `lwd` to set the line width.
+
+There are many ways to personalize your plot to make it clear, informative, and visually appealing. Don’t hesitate to explore the available options and experiment with different settings to see how they affect the result.
+
+::: callout-tip
+## Exercise 12: Let's create your first plot in R!
+
+Use the `plot()` function to create a scatter plot displaying the relationship between `Var1` (X variable) and `Var2` (Y variable) stored in the `x4` object (data frame) created in Exercise 5. Create a plot with the following characteristics:
+
+-   Create a line graph using the `type` argument
+
+-   Name the horizontal (X) axis "Variable 1" (`xlab` argument)
+
+-   Name the vertical (Y) axis "Variable 2" (`ylab` argument)
+
+-   Set the color of the line to blue (`col` argument). Check [R charts](https://r-charts.com/colors/) for an overview of colors available in R.
+
+-   Use `points()` to add individual points to display the original data. Use the `pch` argument to select a point shape (see options below).
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-height: 3.5
+#| fig-align: center
+
+generateRPointShapes <- function() {
+  oldPar <- par()
+  par(font = 2, mar = c(0.5, 0, 0, 0))
+  y = rev(c(rep(1, 6), rep(2, 5), rep(3, 5), rep(4, 5), rep(5, 5)))
+  x = c(rep(1:5, 5), 6)
+  plot(
+    x,
+    y,
+    pch = 0:25,
+    cex = 1.5,
+    ylim = c(1, 5.5),
+    xlim = c(1, 6.5),
+    axes = FALSE,
+    xlab = "",
+    ylab = "",
+    bg = "#FFCD00"
+  )
+  text(x, y, labels = 0:25, pos = 3)
+  par(mar = oldPar$mar, font = oldPar$font)
+}
+generateRPointShapes()
+```
+:::
+
+```{r}
+#| eval: true
+#| echo: true
+#| fig-height: 6
+#| fig-width: 6
+#| fig-align: center
+
+plot(x = x4$Var1,
+     y = x4$Var2,
+     type = "l",
+     xlab = "Variable 1",
+     ylab = "Variable 2",
+     col = "blue")
+
+points(x = x4$Var1,
+       y = x4$Var2,
+       pch = 16)
+```

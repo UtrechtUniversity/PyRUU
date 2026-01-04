@@ -78,9 +78,6 @@ website:
                 text: "5. Data analysis"
     
     - title: "Natural processes"
-      alignment: left
-      style: floating
-      collapse-level: 3
       contents:
         - section: "Natural processes"
           href: Courses/Natural_processes/index.qmd
@@ -150,6 +147,7 @@ format:
     code-overflow: scroll
     fig-cap-location: bottom
     fig-format: svg
+    fig-align: center
 
 editor: visual
 editor_options: 

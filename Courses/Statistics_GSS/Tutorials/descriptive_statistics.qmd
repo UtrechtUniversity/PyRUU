@@ -23,4 +23,22 @@ editor_options:
 image: /Images/Rlogo.png
 ---
 
-Add text
+Start by setting up working directory and install R packages needed for the tutorial.
+
+## Installing R packages
+
+An R package is like a toolbox, except that instead of containing tools, it contains functions for performing specific tasks such as filtering data, calculate descriptive statistics (such as average, variance, standard deviation, etc.), or fitting a statistical model. Most of the R packages you will need for these tutorials are freely available from [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network) or [GitHub](https://github.com/). You can install CRAN R packages using `install.packages()`. If you want to install an R package stored in a GitHub repository, use `install_github()` in the *devtools* R package.
+
+::: callout-tip
+## Exercise 1
+
+Install an R package called *readxl*, which will allow you to import data from Excel files. When using `install.packages()` to perform this operation, remember to enclose *readxl* in quotation marks, as it is a character string.
+:::
+
+```{r}
+#| eval: false
+#| echo: true    
+
+#Install an R package to import data from Excel files
+install.packages("readxl")
+```
