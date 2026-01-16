@@ -106,7 +106,7 @@ website:
             href: Courses/Statistics_GSS/Tutorials/index.qmd
             contents:
               - href: Courses/Statistics_GSS/Tutorials/getting_to_know_R.qmd
-                text: "1. Getting to know R"
+                text: "1. Getting to know R and RStudio"
               - href: Courses/Statistics_GSS/Tutorials/descriptive_statistics.qmd
                 text: "2. Descriptive statistics"
               - href: Courses/Statistics_GSS/Tutorials/comparing_two_groups_part1.qmd
