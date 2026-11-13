@@ -655,12 +655,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#View matrix</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]      [,3]       [,4]       [,5]
-[1,] 0.08641324 0.9715670 0.9946661 0.91606296 0.79727077
-[2,] 0.47035421 0.7067342 0.5621577 0.05720053 0.75466288
-[3,] 0.32749994 0.3509576 0.9872886 0.07382738 0.11715382
-[4,] 0.31889238 0.6081627 0.4168171 0.24171012 0.18819928
-[5,] 0.34658725 0.8741054 0.7518505 0.40522447 0.07735617</code></pre>
+<pre><code>           [,1]       [,2]      [,3]      [,4]       [,5]
+[1,] 0.10877502 0.63742829 0.1871778 0.4721794 0.73123456
+[2,] 0.07742906 0.05546102 0.5544878 0.7736931 0.57195773
+[3,] 0.38365453 0.02578274 0.5230045 0.6287302 0.82130635
+[4,] 0.96134719 0.32341907 0.1745632 0.8318394 0.08407648
+[5,] 0.67221860 0.77491604 0.4051875 0.3430889 0.04216001</code></pre>
 </div>
 </div>
 <p>You can check the size of a matrix using the <code>dim()</code> function. The first element of the output is the number of rows. The second element of the output is the number of columns.</p>
@@ -719,12 +719,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1] 1 2 3 4 5
 
 [[2]]
-           [,1]      [,2]      [,3]       [,4]       [,5]
-[1,] 0.08641324 0.9715670 0.9946661 0.91606296 0.79727077
-[2,] 0.47035421 0.7067342 0.5621577 0.05720053 0.75466288
-[3,] 0.32749994 0.3509576 0.9872886 0.07382738 0.11715382
-[4,] 0.31889238 0.6081627 0.4168171 0.24171012 0.18819928
-[5,] 0.34658725 0.8741054 0.7518505 0.40522447 0.07735617
+           [,1]       [,2]      [,3]      [,4]       [,5]
+[1,] 0.10877502 0.63742829 0.1871778 0.4721794 0.73123456
+[2,] 0.07742906 0.05546102 0.5544878 0.7736931 0.57195773
+[3,] 0.38365453 0.02578274 0.5230045 0.6287302 0.82130635
+[4,] 0.96134719 0.32341907 0.1745632 0.8318394 0.08407648
+[5,] 0.67221860 0.77491604 0.4051875 0.3430889 0.04216001
 
 [[3]]
   Var1 Var2  Var3
@@ -770,7 +770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5621577</code></pre>
+<pre><code>[1] 0.5544878</code></pre>
 </div>
 </div>
 <p>With a data frame, there are a couple of other options to extract data from specific columns. One option is to use the dollar symbol (<code>$</code>) followed by the column name.</p>
@@ -816,12 +816,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>x4[[<span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]      [,3]       [,4]       [,5]
-[1,] 0.08641324 0.9715670 0.9946661 0.91606296 0.79727077
-[2,] 0.47035421 0.7067342 0.5621577 0.05720053 0.75466288
-[3,] 0.32749994 0.3509576 0.9872886 0.07382738 0.11715382
-[4,] 0.31889238 0.6081627 0.4168171 0.24171012 0.18819928
-[5,] 0.34658725 0.8741054 0.7518505 0.40522447 0.07735617</code></pre>
+<pre><code>           [,1]       [,2]      [,3]      [,4]       [,5]
+[1,] 0.10877502 0.63742829 0.1871778 0.4721794 0.73123456
+[2,] 0.07742906 0.05546102 0.5544878 0.7736931 0.57195773
+[3,] 0.38365453 0.02578274 0.5230045 0.6287302 0.82130635
+[4,] 0.96134719 0.32341907 0.1745632 0.8318394 0.08407648
+[5,] 0.67221860 0.77491604 0.4051875 0.3430889 0.04216001</code></pre>
 </div>
 </div>
 

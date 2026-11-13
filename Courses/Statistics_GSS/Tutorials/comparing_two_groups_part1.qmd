@@ -90,7 +90,7 @@ Now, suppose that we are interested in calculating the probability that a random
 ::: callout-tip
 ## Understanding normal distributions and P values
 
-We developed a web app using R Shiny to help you understand normal distributions, the central limit theorem, and P values. Don't forget to check it out! Change input parameters and try to predict how it will affect statistical outcomes.
+We developed a web app to help you understand normal distributions, the central limit theorem, and P values. Don't forget to check it out! Change input parameters and try to predict how it will affect statistical outcomes.
 
 [Go to the web app to explore normal distributions, the central limit theorem, and P values](https://utrecht-university.shinyapps.io/normal-distribution/)
 :::
@@ -99,8 +99,7 @@ We developed a web app using R Shiny to help you understand normal distributions
 
 A z-score is a standardized measure that indicates how far a specific value or observation ($y$) is from the mean ($\bar{y}$) of a dataset, expressed in units of standard deviation ($s$). A positive z-score means the value is above the mean, while a negative z-score indicates it is below the mean.
 
-$$z = \frac{y - \bar{y}}{s}\$$
- {#eq-zscore}
+$$z = \frac{y - \bar{y}}{s}\$$ {#eq-zscore}
 
 If the original variable (Y) follows a normal distribution, the z-scores calculated from this variable will follow a **standard normal distribution** (mean of zero and standard deviation of one) (@fig-standardnormal).
 
@@ -400,8 +399,7 @@ When sample size is small ($n<30$), confidence intervals are calculated using qu
 
 Confidence intervals are always two-tailed because our estimate of the population mean (which is the sample mean, $\bar{y}$) may be larger or smaller than the true population mean ($\mu$), which is often unknown. To calculate a 95% CI, we therefore need to calculate the quantile value of Student's *t* distribution associated with $\alpha=0.05/2=0.025$. In R, this can be done with the `qt()` function.
 
-$$\bar{y} \pm t_{0.975,\,n-1} \cdot \frac{s}{\sqrt{n}}$$
- {#eq-confidenceinterval_t}
+$$\bar{y} \pm t_{0.975,\,n-1} \cdot \frac{s}{\sqrt{n}}$$ {#eq-confidenceinterval_t}
 
 The `qt()` function takes three main arguments:
 
@@ -623,8 +621,7 @@ First, let's do this using the "slow way" by manually computing the test statist
 
 For a paired *t*-test, the test statistic ($t$) can be calculated using @eq-pairedttest, where $\bar{v}$ is the average difference in coffee productivity, $s_v$ is the standard deviation of the differences, and $n$ is the number of paired observations.
 
-$$t = \frac{\bar{v}}{s_v / \sqrt{n}}$$
- {#eq-pairedttest}
+$$t = \frac{\bar{v}}{s_v / \sqrt{n}}$$ {#eq-pairedttest}
 
 Under the null hypothesis (i.e., if there is no difference in the means of the two populations being compared), the $t$ statistic follows a Student’s *t* distribution with $n-1$ degrees of freedom, where $n$ is the number of paired observations (@fig-studentdistribution).
 
