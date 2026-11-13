@@ -87,13 +87,20 @@ plot(ht,dnorm(ht,mean(data$coffee_prod),sd(data$coffee_prod)),type="l",col="blac
 
 Now, suppose that we are interested in calculating the probability that a randomly selected farm has a coffee productivity greater or smaller than a specific productivity value. To answer such a question, we first need to calculate a z-score.
 
+::: callout-tip
+## Understanding normal distributions and P values
+
+We developed a web app using R Shiny to help you understand normal distributions, the central limit theorem, and P values. Don't forget to check it out! Change input parameters and try to predict how it will affect statistical outcomes.
+
+[Go to the web app to explore normal distributions, the central limit theorem, and P values](https://utrecht-university.shinyapps.io/normal-distribution/)
+:::
+
 ### Calculating z-scores
 
 A z-score is a standardized measure that indicates how far a specific value or observation ($y$) is from the mean ($\bar{y}$) of a dataset, expressed in units of standard deviation ($s$). A positive z-score means the value is above the mean, while a negative z-score indicates it is below the mean.
 
-$$
-z = \frac{y - \bar{y}}{s}\
-$$ {#eq-zscore}
+$$z = \frac{y - \bar{y}}{s}\$$
+ {#eq-zscore}
 
 If the original variable (Y) follows a normal distribution, the z-scores calculated from this variable will follow a **standard normal distribution** (mean of zero and standard deviation of one) (@fig-standardnormal).
 
@@ -173,13 +180,13 @@ abline(v=zscore, lty=2)
 
 The `pnorm()` function takes four main arguments:
 
--   `q`: a z-score value (in our case: `{r} round(zscore, 3)`)
+- `q`: a z-score value (in our case: `{r} round(zscore, 3)`)
 
--   `mean`: the mean value of the normal distribution (should be zero for the standard normal, which is the default value)
+- `mean`: the mean value of the normal distribution (should be zero for the standard normal, which is the default value)
 
--   `sd`: the standard deviation of the normal distribution (should be one for the standard normal, which is the default value)
+- `sd`: the standard deviation of the normal distribution (should be one for the standard normal, which is the default value)
 
--   `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$ (@fig-lowertail)
+- `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$ (@fig-lowertail)
 
 ![Illustration of how the `lower.tail` argument works. The yellow area represents the probability that will be returned by `pnorm()` if `lower.tail` is set to `TRUE` (left scenario) or `FALSE` (right scenario).](/Images/lower_tail.png){#fig-lowertail fig-align="center"}
 
@@ -393,17 +400,16 @@ When sample size is small ($n<30$), confidence intervals are calculated using qu
 
 Confidence intervals are always two-tailed because our estimate of the population mean (which is the sample mean, $\bar{y}$) may be larger or smaller than the true population mean ($\mu$), which is often unknown. To calculate a 95% CI, we therefore need to calculate the quantile value of Student's *t* distribution associated with $\alpha=0.05/2=0.025$. In R, this can be done with the `qt()` function.
 
-$$
-\bar{y} \pm t_{0.975,\,n-1} \cdot \frac{s}{\sqrt{n}}
-$$ {#eq-confidenceinterval_t}
+$$\bar{y} \pm t_{0.975,\,n-1} \cdot \frac{s}{\sqrt{n}}$$
+ {#eq-confidenceinterval_t}
 
 The `qt()` function takes three main arguments:
 
--   `p`: a vector of probabilities (for a 95% CI, it will be 0.975)
+- `p`: a vector of probabilities (for a 95% CI, it will be 0.975)
 
--   `df`: the number of degrees of freedom (for a 95% CI, it will be $n-1$)
+- `df`: the number of degrees of freedom (for a 95% CI, it will be $n-1$)
 
--   `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$
+- `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$
 
 :::: callout-tip
 ## Exercise 7
@@ -565,9 +571,9 @@ To answer this question, we can use Bartlett's test. The null hypothesis of this
 
 In R, this test can be carried out using the `bartlett.test()` function, which requires two main arguments:
 
--   `x`: a numeric vector of data values
+- `x`: a numeric vector of data values
 
--   `g`: a vector or factor object giving the group for the corresponding elements of `x`
+- `g`: a vector or factor object giving the group for the corresponding elements of `x`
 
 To run this test, we would therefore need to reorganize the data a bit, so that we can have a data frame with a column for `x` (the coffee productivity values) and a column for `g` (the groups: 2015 and 2020).
 
@@ -617,9 +623,8 @@ First, let's do this using the "slow way" by manually computing the test statist
 
 For a paired *t*-test, the test statistic ($t$) can be calculated using @eq-pairedttest, where $\bar{v}$ is the average difference in coffee productivity, $s_v$ is the standard deviation of the differences, and $n$ is the number of paired observations.
 
-$$
-t = \frac{\bar{v}}{s_v / \sqrt{n}}
-$$ {#eq-pairedttest}
+$$t = \frac{\bar{v}}{s_v / \sqrt{n}}$$
+ {#eq-pairedttest}
 
 Under the null hypothesis (i.e., if there is no difference in the means of the two populations being compared), the $t$ statistic follows a Student’s *t* distribution with $n-1$ degrees of freedom, where $n$ is the number of paired observations (@fig-studentdistribution).
 
@@ -702,11 +707,11 @@ To calculate this p-value, it is important to remember that we are testing a dir
 
 In R, this probability can be calculated using the function `pt()`, which takes three main arguments:
 
--   `q`: a vector of quantiles (in this example, it is the value of the observed *t* statistic)
+- `q`: a vector of quantiles (in this example, it is the value of the observed *t* statistic)
 
--   `df`: the number of degrees of freedom ($n-1$)
+- `df`: the number of degrees of freedom ($n-1$)
 
--   `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$
+- `lower.tail`: a logical argument (can be either `TRUE` or `FALSE`). If set to `TRUE`, probabilities are $P(X \le x)$. If set to `FALSE`, probabilities are $P(X > x)$
 
 :::: callout-tip
 ## Exercise 12
@@ -735,17 +740,17 @@ The calculated p-value is `{r} p`, which is much lower than the significance thr
 
 Of course, *t*-tests can be easily performed in R using the `t.test()` function. Here are the most important arguments of this function:
 
--   `x` and `y`: the numeric vectors of data to compare (one vector per group)
+- `x` and `y`: the numeric vectors of data to compare (one vector per group)
 
--   `paired`: a logical value (`TRUE` or `FALSE`) indicating whether the samples are paired (`TRUE`) or independent (`FALSE`)
+- `paired`: a logical value (`TRUE` or `FALSE`) indicating whether the samples are paired (`TRUE`) or independent (`FALSE`)
 
--   `alternative`: specifies the type of test; `"two.sided"` (default, for undirected hypotheses), `"greater"`, or `"less"`
+- `alternative`: specifies the type of test; `"two.sided"` (default, for undirected hypotheses), `"greater"`, or `"less"`
 
--   `mu`: the expected difference between group means if the null hypothesis is true
+- `mu`: the expected difference between group means if the null hypothesis is true
 
--   `var.equal`: a logical variable indicating whether to treat the two variances as being equal. If `TRUE` then the pooled variance is used to estimate the variance otherwise the Welch (or Satterthwaite) approximation to the degrees of freedom is used.
+- `var.equal`: a logical variable indicating whether to treat the two variances as being equal. If `TRUE` then the pooled variance is used to estimate the variance otherwise the Welch (or Satterthwaite) approximation to the degrees of freedom is used.
 
--   `conf.level`: the confidence level for the interval (default is 0.95)
+- `conf.level`: the confidence level for the interval (default is 0.95)
 
 :::: callout-tip
 ## Exercise 13
