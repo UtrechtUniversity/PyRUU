@@ -88,11 +88,13 @@ plot(ht,dnorm(ht,mean(data$coffee_prod),sd(data$coffee_prod)),type="l",col="blac
 Now, suppose that we are interested in calculating the probability that a randomly selected farm has a coffee productivity greater or smaller than a specific productivity value. To answer such a question, we first need to calculate a z-score.
 
 ::: callout-tip
-## Understanding normal distributions and P values
+## Use our Shiny app to understand normal distributions and P values!
+
+![](/Images/logo_shiny.png){fig-align="center" width="50" height="57"}
 
 We developed a web app to help you understand normal distributions, the central limit theorem, and P values. Don't forget to check it out! Change input parameters and try to predict how it will affect statistical outcomes.
 
-[Go to the web app to explore normal distributions, the central limit theorem, and P values](https://utrecht-university.shinyapps.io/normal-distribution/)
+[Open the Shiny app](https://utrecht-university.shinyapps.io/normal-distribution/){target="_blank" rel="noopener"}
 :::
 
 ### Calculating z-scores

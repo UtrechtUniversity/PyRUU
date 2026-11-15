@@ -27,9 +27,9 @@ image: /Images/Rlogo.png
 
 In this tutorial, you will investigate associations between numerical variables using correlation analysis. You will work with pairs of variables that may be continuous, discrete, or show non-linear relationships, and you will learn how to choose an appropriate correlation method for each situation. Specifically, you will calculate and interpret three commonly used correlation measures:
 
--   Pearson’s correlation: used when both variables are continuous and the relationship is approximately linear.
+- Pearson’s correlation: used when both variables are continuous and the relationship is approximately linear.
 
--   Spearman’s rank correlation and Kendall’s Tau: used when one or both variables are ordinal, when the relationship is monotonic but not linear (for example, curved), or when assumptions for Pearson’s correlation are not met.
+- Spearman’s rank correlation and Kendall’s Tau: used when one or both variables are ordinal, when the relationship is monotonic but not linear (for example, curved), or when assumptions for Pearson’s correlation are not met.
 
 In addition, you will explore how the relationship between two variables may be influenced by a third variable using partial correlation.
 
@@ -39,11 +39,11 @@ Let's get started!
 
 You will test the following null hypotheses:
 
--   There is no positive correlation between litter thickness (`litter_thickness`) and soil organic matter (`SOM`).
+- There is no positive correlation between litter thickness (`litter_thickness`) and soil organic matter (`SOM`).
 
--   There is no positive correlation between mowing intensity (`mowing`) and carbon microbial biomass (`CMB`).
+- There is no positive correlation between mowing intensity (`mowing`) and carbon microbial biomass (`CMB`).
 
--   There is no positive correlation between the number of agroecological practices (`n_practices`) and the Shannon diversity index (`shannon_PIM`).
+- There is no positive correlation between the number of agroecological practices (`n_practices`) and the Shannon diversity index (`shannon_PIM`).
 
 ::: callout-note
 ## The importance of sample size for correlation analysis
@@ -194,9 +194,8 @@ Covariance and correlation coefficients are statistical measures used to quantif
 
 **Covariance** measures the extent to which two variables vary together. It is calculated using @eq-covariance, where $\bar{x}$ is the mean value of variable $x$, $\bar{y}$ is the mean value of variable $y$, and $n$ is the total number of observations. If large values of one variable tend to occur with large values of the other (and small with small), the covariance will be positive. If large values of one variable tend to occur with small values of the other, the covariance will be negative. A covariance close to zero indicates no consistent linear association. However, covariance depends on the scale and units of measurement of the variables, making it difficult to interpret its magnitude directly or compare across datasets.
 
-$$
-cov(x,y)=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{n-1}
-$$ {#eq-covariance}
+$$cov(x,y)=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{n-1}$$
+ {#eq-covariance}
 
 To overcome this limitation, covariance is standardized to produce a **correlation coefficient**, which ranges from -1 to +1 and is unit-free. A value of +1 indicates a perfect positive association, -1 a perfect negative association, and 0 no association.
 
@@ -208,15 +207,13 @@ A correlation between two variables indicates that they are associated: when one
 
 One of the most commonly used correlation measure is the **Pearson's correlation coefficient** ($r$). It assesses the strength and direction of a [linear relationship]{.underline} between two continuous variables. Pearson’s correlation is calculated using @eq-pearson, where $s_x$ and $s_y$ are the standard deviations of variables $x$ and $y$, respectively. Pearson’s correlation assumes that the relationship is approximately linear. A high positive Pearson correlation indicates that the variables increase together along a straight-line trend, while a high negative value indicates that one variable decreases as the other increases. Pearson's correlation is a good choice for continuous data, when relationship looks linear, and when there are no strong outliers.
 
-$$
-r=\frac{cov(x,y)}{s_xs_y}
-$$ {#eq-pearson}
+$$r=\frac{cov(x,y)}{s_xs_y}$$
+ {#eq-pearson}
 
 When the assumptions of Pearson’s correlation are not met, rank-based measures can be used. The **Spearman's rank correlation coefficient** ($\rho$) evaluates the strength and direction of a [monotonic relationship]{.underline}, meaning that one variable consistently increases or decreases as the other changes, though not necessarily in a straight line. To compute Spearman’s correlation, the original data values are first converted into ranks. Pearson’s correlation is then calculated on these ranks rather than on the raw data (@eq-spearman). Because it uses ranks, Spearman’s correlation is less sensitive to outliers and does not require normally distributed data. It is appropriate for ordinal variables or when the relationship is curved but consistently increasing or decreasing. Spearman's correlation is a good choice for discrete data that may contain outliers or when the relationship is monotonic but curved.
 
-$$
-\rho=\frac{cov(R[x],R[y])}{s_{R[x]}s_{R[y]}}
-$$ {#eq-spearman}
+$$\rho=\frac{cov(R[x],R[y])}{s_{R[x]}s_{R[y]}}$$
+ {#eq-spearman}
 
 Another rank-based measure is **Kendall’s Tau** ($\tau$), which is conceptually based on comparing pairs of observations (see lecture for a detailed example). For every possible pair of data points, Kendall’s Tau counts whether the rankings of the two variables agree (a concordant pair) or disagree (a discordant pair). The coefficient is calculated from the difference between the number of concordant and discordant pairs, scaled by the total number of pairs. Like Spearman’s correlation, Kendall’s Tau ranges from -1 to +1 and measures monotonic association.
 
@@ -348,11 +345,11 @@ Pearson's correlation coefficient between the number of agroecological practices
 
 In R, you can also easily calculate correlation coefficients using the `cor()` function. This function takes three main arguments:
 
--   `x`: a vector of data values for the $x$ variable
+- `x`: a vector of data values for the $x$ variable
 
--   `y`: a vector of data values for the $y$ variable
+- `y`: a vector of data values for the $y$ variable
 
--   `method`: a character string indicating which correlation coefficient is to be computed. One of `"pearson"` (default), `"kendall"`, or `"spearman"`.
+- `method`: a character string indicating which correlation coefficient is to be computed. One of `"pearson"` (default), `"kendall"`, or `"spearman"`.
 
 :::: callout-tip
 ## Exercise 5
@@ -428,15 +425,15 @@ In R, you can test the null hypothesis that there is no relationship between two
 
 The `cor.test()` function uses the same arguments as the `cor()` function, plus a couple of extra ones:
 
--   `x`: a vector of data values for the $x$ variable
+- `x`: a vector of data values for the $x$ variable
 
--   `y`: a vector of data values for the $y$ variable
+- `y`: a vector of data values for the $y$ variable
 
--   `method`: a character string indicating which correlation coefficient is to be computed. One of `"pearson"` (default), `"kendall"`, or `"spearman"`.
+- `method`: a character string indicating which correlation coefficient is to be computed. One of `"pearson"` (default), `"kendall"`, or `"spearman"`.
 
--   `alternative`: a character string indicating the alternative hypothesis and must be one of `"two.sided"` (default), `"greater"` or `"less"`.
+- `alternative`: a character string indicating the alternative hypothesis and must be one of `"two.sided"` (default), `"greater"` or `"less"`.
 
--   `conf.level`: the confidence level of the returned confidence interval (default to 0.95)
+- `conf.level`: the confidence level of the returned confidence interval (default to 0.95)
 
 :::: callout-tip
 ## Exercise 6
@@ -489,13 +486,13 @@ A correlation plot visualizes the pairwise correlations among multiple variables
 
 In R, one option to create a correlation plot is to use the `ggcorrplot()` function in the *ggcorrplot* package. Here are some of the most important arguments of this function (but see the help page of this function to see all the arguments available to personalize your plot):
 
--   `corr`: the correlation matrix to visualize
+- `corr`: the correlation matrix to visualize
 
--   `method`: the visualization method to be used (either `"square"` or `"circle"`)
+- `method`: the visualization method to be used (either `"square"` or `"circle"`)
 
--   `type`: the type of display (either `"full"`, `"lower"` or `"upper"`)
+- `type`: the type of display (either `"full"`, `"lower"` or `"upper"`)
 
--   `colors`: a vector of 3 colors for low, mid and high correlation values (default to `c("blue", "white", "red")`)
+- `colors`: a vector of 3 colors for low, mid and high correlation values (default to `c("blue", "white", "red")`)
 
 :::: callout-tip
 ## Exercise 7
